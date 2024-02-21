@@ -1,15 +1,46 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+// import HomeView from '../views/frontEnd/HomeView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: () => import('../views/HomeView.vue')
+    component: () => import('../views/frontEnd/FrontView.vue'),
+    children: [
+      {
+        path: 'about',
+        component: () => import('../views/frontEnd/AboutView.vue')
+      },
+      {
+        path: 'products',
+        component: () => import('../views/frontEnd/ProductsView.vue')
+      },
+      {
+        path: 'product/:productId',
+        component: () => import('../views/frontEnd/ProductView.vue')
+      },
+      {
+        path: 'checkout',
+        component: () => import('../views/frontEnd/CheckoutView.vue')
+      }
+    ]
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('../views/AboutView.vue')
+    path: '/login',
+    component: () => import('../views/frontEnd/LoginView.vue')
+  },
+  {
+    path: '/admin',
+    component: () => import('../views/backEnd/BackEndView.vue'),
+    children: [
+      {
+        path: 'products',
+        component: () => import('../views/backEnd/ProductsView.vue')
+      }
+    ]
+  },
+  { // 404頁面
+    path: '/:pathMatch(.*)*',
+    component: () => import('../views/NotFound.vue')
   }
 ]
 

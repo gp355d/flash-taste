@@ -1,0 +1,165 @@
+<template>
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" to="/admin">後台</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <RouterLink class="nav-link" to="/about">about</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink class="nav-link" to="/checkout">checkout</RouterLink>
+        </li>
+        <li class="nav-item">
+          <RouterLink class="nav-link" to="/admin/products">products</RouterLink>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+  <div class="container-fluid" v-if="checkUserStatus">
+    <div class="row">
+      <!-- sidebar -->
+      <div class="col-md-3 col-lg-2 px-0 position-fixed h-100 bg-white shadow-sm sidebar" :class="{ 'active': sidebarActive }" ref="sidebar" >
+        <h1 class="bi bi-bootstrap text-primary d-flex my-4 justify-content-center"></h1>
+        <div class="list-group rounded-0">
+          <a href="#" class="list-group-item list-group-item-action active border-0 d-flex align-items-center">
+            <span class="bi bi-border-all"></span>
+            <span class="ms-2">Dashboard</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action border-0 align-items-center">
+            <span class="bi bi-box"></span>
+            <span class="ms-2">Products</span>
+          </a>
+
+          <button
+            class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center"
+            @click="toggleCollapse('sale')">
+            <div>
+              <span class="bi bi-cart-dash"></span>
+              <span class="ms-2">Sales</span>
+            </div>
+            <span class="bi bi-chevron-down small"></span>
+          </button>
+          <div class="collapse" id="sale-collapse" :class="{ 'show': isSaleCollapse }" data-bs-parent="#sidebar">
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action border-0 ps-5">Customers</a>
+              <a href="#" class="list-group-item list-group-item-action border-0 ps-5">Sale Orders</a>
+            </div>
+          </div>
+
+          <button
+            class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center"
+            @click="toggleCollapse('purchase')">
+            <div>
+              <span class="bi bi-cart-plus"></span>
+              <span class="ms-2">Purchase</span>
+            </div>
+            <span class="bi bi-chevron-down small"></span>
+          </button>
+          <div class="collapse" :class="{ 'show': isPurchaseCollapse }" id="purchase-collapse" data-bs-parent="#sidebar">
+            <div class="list-group">
+              <a href="#" class="list-group-item list-group-item-action border-0 pl-5">Sellers</a>
+              <a href="#" class="list-group-item list-group-item-action border-0 pl-5">Purchase Orders</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- overlay to close sidebar on small screens -->
+      <div class="w-100 vh-100 position-fixed overlay d-none" id="sidebar-overlay" @click="closeSidebar"></div>
+      <!-- note: in the layout margin auto is the key as sidebar is fixed -->
+      <div class="col-md-9 col-lg-10 ms-md-auto px-0">
+        <!-- top nav -->
+        <nav class="w-100 d-flex px-4 py-2 mb-4 shadow-sm">
+          <!-- close sidebar -->
+          <button class="btn py-0 d-md-none" @click="toggleSidebar">
+            <span class="bi bi-list text-primary h3"></span>
+          </button>
+          <div class="dropdown ms-auto">
+            <button class="btn py-0 d-flex align-items-center" id="logout-dropdown" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <span class="bi bi-person text-primary h4"></span>
+              <span class="bi bi-chevron-down ms-1 mb-2"></span>
+            </button>
+            <div class="dropdown-menu border-0 shadow-sm" aria-labelledby="logout-dropdown">
+              <a class="dropdown-item" href="#">Logout</a>
+              <a class="dropdown-item" href="#">Settings</a>
+            </div>
+          </div>
+        </nav>
+        <!-- main content -->
+        <main>
+          <div class="container">
+            <router-view></router-view>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+const { VITE_APP_API_URL } = import.meta.env
+
+export default {
+  data () {
+    return {
+      sidebarActive: false,
+      isSaleCollapse: false,
+      isPurchaseCollapse: false,
+      checkUserStatus: false
+    }
+  },
+  methods: {
+    checkUser () {
+      const mytoken = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1')
+      this.axios.defaults.headers.common.Authorization = mytoken
+      this.axios.post(`${VITE_APP_API_URL}/api/user/check`)
+        .then((res) => {
+          console.log(res)
+          this.checkUserStatus = res.data.success
+          // alert(this.checkUserStatus)
+          alert('驗證中...')
+          if (this.checkUserStatus) {
+            this.$router.push('/admin/products')
+          } else {
+            this.$router.push('/login')
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+          // this.checkUserStatus = err.data.success
+          alert(err.response.data.message)
+          this.$router.push('/login')
+        })
+    },
+    toggleSidebar () {
+      this.sidebarActive = !this.sidebarActive
+      const sidebarOverlay = document.getElementById('sidebar-overlay')
+      if (this.sidebarActive) {
+        sidebarOverlay.classList.remove('d-none')
+      } else {
+        sidebarOverlay.classList.add('d-none')
+      }
+    },
+    closeSidebar () {
+      this.sidebarActive = false
+      document.getElementById('sidebar-overlay').classList.add('d-none')
+    },
+    toggleCollapse (type) {
+      if (type === 'sale') {
+        this.isSaleCollapse = !this.isSaleCollapse
+        this.isPurchaseCollapse = false // Close other collapse if open
+      } else if (type === 'purchase') {
+        this.isPurchaseCollapse = !this.isPurchaseCollapse
+        this.isSaleCollapse = false // Close other collapse if open
+      }
+    }
+  },
+  mounted () {
+    this.checkUser()
+  }
+}
+</script>
