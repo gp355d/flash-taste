@@ -26,46 +26,26 @@
       <div class="col-md-3 col-lg-2 px-0 position-fixed h-100 bg-white shadow-sm sidebar" :class="{ 'active': sidebarActive }" ref="sidebar" >
         <h1 class="bi bi-bootstrap text-primary d-flex my-4 justify-content-center"></h1>
         <div class="list-group rounded-0">
-          <a href="#" class="list-group-item list-group-item-action active border-0 d-flex align-items-center">
+          <RouterLink to="/" href="#" class="list-group-item list-group-item-action border-0 d-flex align-items-center">
             <span class="bi bi-border-all"></span>
-            <span class="ms-2">Dashboard</span>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action border-0 align-items-center">
+            <span class="ms-2">回前台</span>
+          </RouterLink>
+          <RouterLink to="/admin/products" href="#" class="list-group-item border-0 align-items-center">
             <span class="bi bi-box"></span>
-            <span class="ms-2">Products</span>
-          </a>
-
-          <button
-            class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center"
-            @click="toggleCollapse('sale')">
-            <div>
-              <span class="bi bi-cart-dash"></span>
-              <span class="ms-2">Sales</span>
-            </div>
-            <span class="bi bi-chevron-down small"></span>
-          </button>
-          <div class="collapse" id="sale-collapse" :class="{ 'show': isSaleCollapse }" data-bs-parent="#sidebar">
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action border-0 ps-5">Customers</a>
-              <a href="#" class="list-group-item list-group-item-action border-0 ps-5">Sale Orders</a>
-            </div>
-          </div>
-
-          <button
-            class="list-group-item list-group-item-action border-0 d-flex justify-content-between align-items-center"
-            @click="toggleCollapse('purchase')">
-            <div>
-              <span class="bi bi-cart-plus"></span>
-              <span class="ms-2">Purchase</span>
-            </div>
-            <span class="bi bi-chevron-down small"></span>
-          </button>
-          <div class="collapse" :class="{ 'show': isPurchaseCollapse }" id="purchase-collapse" data-bs-parent="#sidebar">
-            <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action border-0 pl-5">Sellers</a>
-              <a href="#" class="list-group-item list-group-item-action border-0 pl-5">Purchase Orders</a>
-            </div>
-          </div>
+            <span class="ms-2">商品管理</span>
+          </RouterLink>
+          <RouterLink to="/admin/order" href="#" class="list-group-item border-0 align-items-center">
+            <span class="bi bi-envelope-paper"></span>
+            <span class="ms-2">訂單管理</span>
+          </RouterLink>
+          <RouterLink to="/admin/coupon" href="#" class="list-group-item border-0 align-items-center">
+            <span class="bi bi-ticket"></span>
+            <span class="ms-2">優惠券管理</span>
+          </RouterLink>
+          <RouterLink to="/admin/article" href="#" class="list-group-item border-0 align-items-center">
+            <span class="bi bi-journal-text"></span>
+            <span class="ms-2">文章管理</span>
+          </RouterLink>
         </div>
       </div>
       <!-- overlay to close sidebar on small screens -->
@@ -85,8 +65,7 @@
               <span class="bi bi-chevron-down ms-1 mb-2"></span>
             </button>
             <div class="dropdown-menu border-0 shadow-sm" aria-labelledby="logout-dropdown">
-              <a class="dropdown-item" href="#">Logout</a>
-              <a class="dropdown-item" href="#">Settings</a>
+              <a class="dropdown-item" href="#" @click.prevent="logout">Logout</a>
             </div>
           </div>
         </nav>
@@ -101,14 +80,12 @@
   </div>
 </template>
 <script>
+import Swal from 'sweetalert2'
 const { VITE_APP_API_URL } = import.meta.env
-
 export default {
   data () {
     return {
       sidebarActive: false,
-      isSaleCollapse: false,
-      isPurchaseCollapse: false,
       checkUserStatus: false
     }
   },
@@ -121,7 +98,12 @@ export default {
           console.log(res)
           this.checkUserStatus = res.data.success
           // alert(this.checkUserStatus)
-          alert('驗證中...')
+          Swal.fire({
+            position: 'top-end',
+            icon: 'info',
+            title: '驗證中',
+            timer: 1500
+          })
           if (this.checkUserStatus) {
             this.$router.push('/admin/products')
           } else {
@@ -148,14 +130,24 @@ export default {
       this.sidebarActive = false
       document.getElementById('sidebar-overlay').classList.add('d-none')
     },
-    toggleCollapse (type) {
-      if (type === 'sale') {
-        this.isSaleCollapse = !this.isSaleCollapse
-        this.isPurchaseCollapse = false // Close other collapse if open
-      } else if (type === 'purchase') {
-        this.isPurchaseCollapse = !this.isPurchaseCollapse
-        this.isSaleCollapse = false // Close other collapse if open
-      }
+    logout () {
+      this.axios.post(`${VITE_APP_API_URL}/logout`)
+        .then((res) => {
+          //   this.getOrders()
+          document.cookie = `hexToken=; expires=${new Date()};`
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: res.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          this.$router.push('/login')
+          //   this.$refs.customerorderModal.close()
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
   },
   mounted () {

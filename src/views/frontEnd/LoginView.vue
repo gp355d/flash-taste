@@ -26,6 +26,7 @@
     </div>
 </template>
 <script>
+import Swal from 'sweetalert2'
 export default {
   data () {
     return {
@@ -50,10 +51,13 @@ export default {
           this.$router.push('/admin/products')
         })
         .catch((err) => {
-          console.log(err)
-          alert(err.response.data.message)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'info',
+            title: err.response.data.message,
+            timer: 1500
+          })
           this.$router.push('login')
-        // console.log(err.data);
         })
       this.user.email = ''
       this.user.password = ''
