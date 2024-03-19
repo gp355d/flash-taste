@@ -1,0 +1,1 @@
+@charset "UTF-8";.cart-container{max-height:400px;overflow-x:hidden}.cart-list{border:1px solid #dee2e6;border-radius:15px;margin-bottom:10px}.cart-list .row{padding:10px}@media (min-width: 992px){.cart-container{overflow-y:auto;overflow-x:hidden}}.trash:hover{color:#33691e!important}
