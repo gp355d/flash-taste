@@ -1,12 +1,7 @@
 <template>
     <h2>這是結帳頁</h2>
     <div class="container">
-      <!-- <loading :active="isLoadingStatus.isLoading"></loading> -->
       <div class="mt-4">
-        <!-- 產品Modal -->
-
-        <!-- 產品Modal -->
-
         <table class="table align-middle">
           <thead>
             <tr>
@@ -18,7 +13,6 @@
           </thead>
           <tbody>
             <tr v-for="(item) in products" :key="item.id">
-              <!-- {{products}} -->
               <td style="width: 200px">
                 <div style="height: 100px; background-size: cover; background-position: center"
                   :style="{'backgroundImage':`url(${item.imageUrl})`}"></div>
@@ -65,7 +59,6 @@
           </thead>
           <tbody>
             <template v-if="cart.carts">
-              <!-- <pre>{{cart.carts}}</pre> -->
               <tr v-for="cart in cart.carts" :key="cart.id+'cart'">
                 <td>
                   <button type="button" class="btn btn-outline-danger btn-sm" @click="deleteCart(cart.id)">
@@ -109,8 +102,6 @@
           </tfoot>
         </table>
       </div>
-
-      <!-- <modal></modal> -->
       <div class="my-5 row justify-content-center">
         <VForm ref="form" class="col-md-6" v-slot="{ errors }" @submit="sendOrder">
           <div class="mb-3">
@@ -185,7 +176,6 @@ export default {
         .then((res) => {
           this.products = res.data.products
           loader.hide()
-        // console.log(this.products);
         })
         .catch((err) => {
           alert(err.response.data.message)
@@ -204,7 +194,6 @@ export default {
         })
         .catch((err) => {
           alert(err.response.data.message)
-        // console.log(err.data);
         })
     },
     addToCart (productId, qty = 1) {
@@ -219,7 +208,6 @@ export default {
       this.axios.post(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/cart`, cart)
         .then((res) => {
           alert(res.data.message)
-          // console.log(res.data);
           this.getCarts()
           this.isLoadingStatus.ItemId = ''
           this.$refs.userProductModal.closeModal()
@@ -227,25 +215,20 @@ export default {
         })
         .catch((err) => {
           alert(err.response.data.message)
-          // console.log(err.data)
         })
     },
     getCarts () {
-      // this.isLoadingStatus.isLoading = true;
       const loader = this.$loading.show()
       this.axios.get(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/cart`)
         .then((res) => {
-        // this.isLoadingStatus.isLoading = false;
           this.cart = res.data.data
           loader.hide()
         })
         .catch((err) => {
           alert(err.response.data.message)
-        // console.log(err.data);
         })
     },
     changeToCart (item, qty = 1) {
-      // this.isLoadingStatus.isLoading = true
       const order = {
         data: {
           product_id: item.product_id,
@@ -256,16 +239,12 @@ export default {
       this.axios.put(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/cart/${item.id}`, order)
         .then((res) => {
           alert(res.data.message)
-          // console.log(res.data);
           this.getCarts()
-          // this.isLoadingStatus.isLoading = false
           this.isLoadingStatus.cartLoading = ''
           this.$refs.userProductModal.closeModal()
-        // console.log(this.isLoadingStatus.ItemId);
         })
         .catch((err) => {
           alert(err.response.data.message)
-        // console.log(err.data);
         })
     },
     deleteCart (cartId) {
@@ -278,7 +257,6 @@ export default {
         })
         .catch((err) => {
           alert(err.response.data.message)
-          // console.log(err.data);
         })
     },
     deleteAllCarts () {
@@ -291,7 +269,6 @@ export default {
         })
         .catch((err) => {
           alert(err.response.data.message)
-          // console.log(err.data);
         })
     },
     sendOrder () {
@@ -304,7 +281,6 @@ export default {
         },
         message: this.form.msg
       }
-      // this.$refs.form.resetForm()
       this.axios.post(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/order`, { data })
         .then((res) => {
           const loader = this.$loading.show()
@@ -316,14 +292,12 @@ export default {
         })
         .catch((err) => {
           alert(err.response.data)
-        // console.log(err.data);
         })
     }
   },
   mounted () {
     this.getProducts()
     this.getCarts()
-    // console.log(this.$refs);
   },
   components: {
     DetailProduct

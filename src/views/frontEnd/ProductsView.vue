@@ -1,36 +1,8 @@
 <template>
-  <!-- <div class="row"> -->
-      <!-- <h2>這是產品列表</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">圖片</th>
-            <th scope="col">名稱</th>
-            <th scope="col">價格</th>
-            <th scope="col">
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="products in products" :key="products.id">
-            <td><img :src="products.imageUrl" alt="" class="img-fluid" width="150"></td>
-            <td>{{ products.title }}</td>
-            <td>{{ products.origin_price }}</td>
-            <td><button type="button" class="btn btn-primary" @click="more(products.id)">詳細介紹</button></td>
-          </tr>
-        </tbody>
-      </table> -->
       <div class="position-relative mb-3" style="background-image: url('https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');background-size: cover;background-repeat: no-repeat;background-position: center;height: 300px;">
         <div class="px-lg-5 py-lg-2 px-4 py-3 position-absolute top-50 start-50 translate-middle" style="background:rgba(255, 255, 255, 0.6);border-radius:24px;">
           <h1>產品列表</h1>
         </div>
-      <!-- <div class="d-flex flex-column justify-content-center align-items-center px-5 py-2" style="background:rgba(255, 255, 255, 0.6);border-radius:24px;" data-v-d685d90f="">
-        <img src="/public/logo3.svg" alt="logo" width="260" height="160" class="img-fluid" data-v-d685d90f="">
-        <h3 class="fs-1 fs-lg-1 fw-lg-bold text-center mb-4" data-v-d685d90f="">療癒一杯，感受生活的美好</h3>
-        <h1 class="fs-2 fs-lg-3 text-center text-gray-dark mb-8" data-v-d685d90f="">尋找心靈的寧靜之旅</h1>
-        <a href="#/products" class="btn btn-primary fs-lg-5 px-5 py-3 px-lg-6" data-v-d685d90f="">立即探索</a>
-      </div> -->
-
     </div>
       <div class="container">
         <div class="row">
@@ -59,7 +31,6 @@
                         <div class="d-flex align-items-center justify-content-between">
                           <h5 class="card-title fs-4 fw-bold mb-0">{{ products.title }}</h5>
                           <a class="d-block" href="#" @click.prevent="() => addToFavorite(products.id)">
-                            <!-- <span class="material-icons fs-2" style="cursor: pointer;">favorite_border</span> -->
                             <i class="bi bi-heart fs-2" style="cursor: pointer;"  v-if="favoriteList.id.indexOf(products.id) === -1"></i>
                             <i v-else class="bi bi-heart-fill fs-2"></i>
                           </a>
@@ -84,8 +55,6 @@
           </div>
         </div>
       </div>
-    <!-- </div> -->
-  <!-- <pre>{{ products }}</pre> -->
 </template>
 <script>
 import PaginationCom from '../../components/PaginationCom.vue'
@@ -113,9 +82,6 @@ export default {
           this.products = res.data.products
           this.page = res.data.pagination
           loader.hide()
-          //   this.getOrders()
-          //   alert(res.data.message)
-          //   this.$refs.customerorderModal.close()
         })
         .catch((err) => {
           console.log(err)

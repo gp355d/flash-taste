@@ -14,7 +14,7 @@
     <h2 class="text-center text-primary fw-bold">產品特色</h2>
     <ul class="row d-block d-md-flex align-items-center justify-content-md-end list-unstyled position-relative" >
       <li class="col-md-8">
-        <img class="rounded-3 indexAboutImg img-fluid object-fit-cover" src= "https://images.unsplash.com/photo-1582650859079-ee63913ecb84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="">
+        <img class="rounded-3 indexAboutImg img-fluid object-fit-cover" src= "https://images.unsplash.com/photo-1582650859079-ee63913ecb84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="feature-1">
       </li>
       <li class="col-md-5 position-absolute start-0 position-none">
         <div class="d-flex flex-column justify-content-center align-items-center  align-items-md-start rounded-3 bg-white p-4" style="min-height: 250px;">
@@ -29,7 +29,7 @@
     <section class="container" >
     <ul class="row d-block d-md-flex align-items-center list-unstyled position-relative" >
       <li class="col-md-8">
-        <img class="rounded-3 indexAboutImg img-fluid object-fit-cover w-100" src="https://images.unsplash.com/photo-1579887829663-67706e62e6ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80)" alt="">
+        <img class="rounded-3 indexAboutImg img-fluid object-fit-cover w-100" src="https://images.unsplash.com/photo-1579887829663-67706e62e6ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80)" alt="feature-2">
       </li>
       <li class="col-md-5 d-md-flex flex-md-column position-absolute end-0 position-none">
         <div class="rounded-3 bg-white d-flex flex-column justify-content-center p-4" style="min-height: 250px;">
@@ -44,7 +44,7 @@
     <section class="container" >
     <ul class="row d-block d-md-flex align-items-center justify-content-md-end list-unstyled position-relative mb-0">
       <li class="col-md-8">
-        <img class="bg-cover rounded-3 indexAboutImg img-fluid object-fit-cover" src="https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+        <img class="bg-cover rounded-3 indexAboutImg img-fluid object-fit-cover" src="https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="feature-3">
       </li>
       <li class="col-md-5 position-absolute start-0 position-none">
         <div class="d-flex flex-column justify-content-center align-items-center  align-items-md-start rounded-3 bg-white p-4" style="min-height: 250px;">
@@ -57,52 +57,6 @@
     </ul>
     </section>
   </div>
-  <!-- <section class="container py-3 mb-240" >
-  <h2 class="text-center text-primary fw-bold mb-0">產品特色</h2>
-  <ul class="row d-block d-md-flex align-items-center justify-content-md-end list-unstyled position-relative min-h140" >
-    <li class="col-md-8">
-      <div class="bg-cover rounded-3 indexAboutImg" style="background-image: url(https://images.unsplash.com/photo-1582650859079-ee63913ecb84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);"></div>
-    </li>
-    <li class="col-md-5 position-absolute start-0" style="right: auto;">
-      <div class="d-flex flex-column justify-content-center align-items-center  align-items-md-start rounded-3 bg-white p-4" style="min-height:300px;">
-        <div class="text-center text-md-start">
-          <h2 class="fw-bold">優質的烘焙技術</h2>
-            <span class="">品嚐我們的優質茶葉，來自於全球各地的茶園，保證新鮮、香醇。</span>
-        </div>
-      </div>
-    </li>
-  </ul>
-</section> -->
-<!-- <section class="container py-3 mb-240" >
-<ul class="row d-block d-md-flex align-items-center list-unstyled position-relative min-h140" >
-    <li class="col-md-8">
-      <div class="bg-cover rounded-3 indexAboutImg" style="background-image: url(https://images.unsplash.com/photo-1579887829663-67706e62e6ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80);"></div>
-    </li>
-    <li class="col-md-5 d-md-flex flex-md-column position-absolute end-0">
-      <div class="rounded-3 bg-white d-flex flex-column justify-content-center p-4" style="min-height:300px;">
-        <div class="text-center text-md-start">
-          <h2 class="fw-bold">風味多樣的選擇</h2>
-            <span class="">茶品系列豐富多彩，包括清新的綠茶、馥郁的烏龍茶、濃郁的紅茶等，滿足您不同口味的需求。</span>
-        </div>
-      </div>
-    </li>
-  </ul>
-</section> -->
-<!-- <section class="container py-3 mb-240" >
-  <ul class="row d-block d-md-flex align-items-center justify-content-md-end list-unstyled position-relative min-h140">
-    <li class="col-md-8">
-      <div class="bg-cover rounded-3 indexAboutImg" style="background-image: url(https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);"></div>
-    </li>
-    <li class="col-md-5 position-absolute start-0" style="right: auto;">
-      <div class="d-flex flex-column justify-content-center align-items-center  align-items-md-start rounded-3 bg-white p-4" style="min-height:300px;">
-        <div class="text-center text-md-start">
-          <h2 class="fw-bold">健康享受的美好時刻</h2>
-            <span class="">茶葉含有豐富的營養成分和抗氧化劑，每一口茶都是對健康的呵護，讓您享受健康生活的美好時刻。</span>
-        </div>
-      </div>
-    </li>
-  </ul>
-</section> -->
     <div class="">
       <div class="container mb-3 py-5">
         <h2 class="text-center text-primary fw-bold">精選產品</h2>
@@ -117,7 +71,6 @@
                 </a>
                   <div class="p-3">
                     <h3>{{item.title}}</h3>
-                    <!-- <div  v-html="item.description"></div> -->
                     <div v-if="item.price !== item.origin_price">
                       <span class="fs-3 text-danger">{{$filters.currency(item.price)}}</span>
                       <del class="fs-2 ms-2">{{$filters.currency(item.origin_price)}}</del>
@@ -135,42 +88,6 @@
         </div>
       </div>
     </div>
-        <!-- <div class="container mb-3 py-5">
-      <h2 class="text-center fw-bold text-primary">產品特色</h2>
-      <div class="row flex-row-reverse">
-        <div class="col-md-6">
-          <img src="https://images.unsplash.com/photo-1582650859079-ee63913ecb84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="feature-img1" class="img-fluid rounded-3 object-fit-cover">
-        </div>
-        <div class="col-md-6 d-flex flex-md-column flex-column justify-content-center">
-          <div class="text-center text-md-start">
-            <h2 class="fw-bold">優質的烘焙技術</h2>
-            <span class="">品嚐我們的優質茶葉，來自於全球各地的茶園，保證新鮮、香醇。</span>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <img src="https://images.unsplash.com/photo-1579887829663-67706e62e6ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=640&q=80" alt="feature-img2" class="img-fluid rounded-3 object-fit-cover">
-        </div>
-        <div class="col-md-6 d-flex flex-md-column flex-column justify-content-center">
-          <div class="text-center text-md-start">
-            <h2 class="fw-bold">風味多樣的選擇</h2>
-            <span class="">茶品系列豐富多彩，包括清新的綠茶、馥郁的烏龍茶、濃郁的紅茶等，滿足您不同口味的需求。</span>
-          </div>
-        </div>
-      </div>
-      <div class="row flex-row-reverse">
-        <div class="col-md-6">
-          <img src="https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="feature-img3" class="img-fluid rounded-3 object-fit-cover">
-        </div>
-        <div class="col-md-6 d-flex flex-md-column flex-column justify-content-center">
-          <div class="text-center text-md-start">
-            <h2 class="fw-bold">健康享受的美好時刻</h2>
-            <span class="">茶葉含有豐富的營養成分和抗氧化劑，每一口茶都是對健康的呵護，讓您享受健康生活的美好時刻。</span>
-          </div>
-        </div>
-      </div>
-    </div> -->
     <div class="container mb-3 py-5">
       <div class="row flex-row-reverse">
         <div class="col-md-6 mb-md-0 mb-3">
@@ -285,7 +202,6 @@
     </div>
 </template>
 <script>
-// import banner from '@/components/BannerView.vue'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -321,7 +237,6 @@ export default {
     ...mapActions(CartStore, ['addToCart'])
   },
   components: {
-    // banner,
     Swiper,
     SwiperSlide
   },

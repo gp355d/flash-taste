@@ -96,7 +96,6 @@
 </template>
 
 <script>
-// import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation } from 'swiper'
 import 'swiper/css/navigation'
 import 'swiper/css'
@@ -106,10 +105,6 @@ export default {
       modules: [Navigation]
     }
   }
-  // components: {
-  //   Swiper,
-  //   SwiperSlide
-  // }
 }
 </script>
 

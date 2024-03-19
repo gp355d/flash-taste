@@ -214,8 +214,6 @@ body {
   background-position: center;
 }
 .small-img {
-  // height: 140px;
-  // box-sizing: border-box;
   padding: 10px 0;
 }
 .small-img .swiper-slide {

@@ -153,12 +153,6 @@
           </VForm>
         </div>
       </div>
-      <!-- <div class="row">
-          <div class="d-flex justify-content-between fs-5">
-            <span>總和</span>
-            <span>$300</span>
-          </div>
-        </div> -->
     </div>
   </div>
 </template>
@@ -172,7 +166,6 @@ export default {
     return {
       couponCode: '',
       discountStatus: false,
-      // final_totals: 0,
       discount: 0,
       form: {
         email: '',
@@ -193,7 +186,6 @@ export default {
       this.$http.post(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/coupon`, { data: coupon })
         .then((res) => {
           this.discountStatus = res.data.success
-          // this.final_totals = Math.round(res.data.data.final_total)
           this.discount = Math.round(this.final_total - this.total)
           Swal.fire({
             position: 'top-end',
@@ -225,12 +217,10 @@ export default {
         },
         message: this.form.msg
       }
-      // this.$refs.form.resetForm()
       this.axios.post(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/order`, { data })
         .then((res) => {
           const loader = this.$loading.show()
           console.log(res.data)
-          // alert(res.data.message)
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -244,7 +234,6 @@ export default {
           this.$router.push(`/complete/${res.data.orderId}`)
         })
         .catch((err) => {
-          // alert(err.response.data)
           Swal.fire({
             position: 'top-end',
             icon: 'error',
@@ -252,7 +241,6 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
-        // console.log(err.data);
         })
     }
   },

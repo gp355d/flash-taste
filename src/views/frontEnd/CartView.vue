@@ -32,7 +32,6 @@
     <h4>購物車清單</h4>
     <div class="row d-flex justify-content-center">
       <div class="col-md-8">
-        <!-- <pre>{{ carts }}</pre> -->
         <template v-if="carts.carts?.length > 0">
           <div class="row border border-1 mb-2" v-for="cart in carts.carts" :key="cart.id + 'cart'">
             <div class="col-lg-2 align-self-center text-center">
@@ -98,12 +97,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="col-12 mb-6">
-            <div class="d-flex justify-content-end align-items-center shadow-sm">
-              <span class="fs-4 me-6">總金額</span>
-              <span class="fs-5 text-end">$3000</span>
-            </div>
-          </div> -->
   </div>
   <div class="container">
     <div class="col-12 d-flex justify-content-end" v-if="carts.carts?.length">
@@ -121,9 +114,6 @@ export default {
         isLoading: false,
         cartLoading: ''
       }
-      // carts: {
-      //   carts: []
-      // }
     }
   },
   methods: {
@@ -143,7 +133,7 @@ export default {
   max-height: 400px;
   /* 固定容器的最大高度 */
   overflow-x: hidden;
-  /* 添加垂直滚动条 */
+  /* 添加垂直卷軸 */
 }
 
 .cart-list {

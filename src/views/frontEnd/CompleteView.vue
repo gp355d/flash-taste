@@ -54,8 +54,6 @@
                 </ul>
               </div>
             </div>
-
-            <!-- <pre>{{ order.user }}</pre> -->
           </div>
           <div class="col-md-6">
             <p class="h3"><strong>顧客資訊:</strong></p>
@@ -109,7 +107,6 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
-          // console.log(err.data);
         })
     },
     pay () {
