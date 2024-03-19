@@ -191,8 +191,14 @@ export default {
   mounted () {
     this.productModal = new Modal(this.$refs.productModal, {
       keyboard: false,
-      backdrop: 'static'
+      backdrop: 'static',
+      focus: false
     })
   }
 }
 </script>
+<style>
+.ck.ck-balloon-panel{
+  z-index: 1055 !important;
+}
+</style>

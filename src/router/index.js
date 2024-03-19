@@ -7,6 +7,11 @@ const routes = [
     component: () => import('../views/frontEnd/FrontView.vue'),
     children: [
       {
+        path: '',
+        component: () => import('../views/frontEnd/HomePageView.vue'),
+        meta: { title: '首頁' }
+      },
+      {
         path: 'about',
         component: () => import('../views/frontEnd/AboutView.vue')
       },
@@ -19,8 +24,32 @@ const routes = [
         component: () => import('../views/frontEnd/ProductView.vue')
       },
       {
+        path: 'cart',
+        component: () => import('../views/frontEnd/CartView.vue')
+      },
+      {
+        path: 'order',
+        component: () => import('../views/frontEnd/OrderView.vue')
+      },
+      {
         path: 'checkout',
         component: () => import('../views/frontEnd/CheckoutView.vue')
+      },
+      {
+        path: 'complete/:order_id',
+        component: () => import('../views/frontEnd/CompleteView.vue')
+      },
+      {
+        path: 'pay',
+        component: () => import('../views/frontEnd/PayView.vue')
+      },
+      {
+        path: 'blog',
+        component: () => import('../views/frontEnd/BlogView.vue')
+      },
+      {
+        path: 'blog/:id',
+        component: () => import('../views/frontEnd/BlogDetail.vue')
       }
     ]
   },

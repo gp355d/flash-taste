@@ -1,5 +1,4 @@
 <template>
-  <div class="row">
     <h2>這是結帳頁</h2>
     <div class="container">
       <!-- <loading :active="isLoadingStatus.isLoading"></loading> -->
@@ -156,7 +155,6 @@
     <DetailProduct ref="userProductModal" :temp-product="product" @add-to-cart="addToCart"></DetailProduct>
   </div>
 
-  </div>
 </template>
 <script>
 import DetailProduct from '../../components/DetailProduct.vue'

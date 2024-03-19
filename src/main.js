@@ -9,7 +9,7 @@ import { localize, setLocale } from '@vee-validate/i18n'
 import zhTW from '@vee-validate/i18n/dist/locale/zh_TW.json'
 import CKEditor from '@ckeditor/ckeditor5-vue'
 import 'sweetalert2/src/sweetalert2.scss'
-
+import 'material-icons/iconfont/material-icons.css'
 import { LoadingPlugin } from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 
