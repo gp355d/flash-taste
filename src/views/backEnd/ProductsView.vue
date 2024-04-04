@@ -30,10 +30,10 @@
           </thead>
           <tbody>
             <tr v-for="item in products" :key="'id' + item.id">
-              <td>{{item.category}}</td>
-              <td>{{item.title}}</td>
-              <td class="text-end">{{$filters.currency(item.origin_price)}}</td>
-              <td class="text-end">{{$filters.currency(item.price)}}</td>
+              <td>{{ item.category }}</td>
+              <td>{{ item.title }}</td>
+              <td class="text-end">{{ $filters.currency(item.origin_price) }}</td>
+              <td class="text-end">{{ $filters.currency(item.price) }}</td>
               <td>
                 <span class="text-success" v-if="item.is_enabled">已上架</span>
                 <span v-else>未上架</span>
@@ -52,9 +52,9 @@
           </tbody>
         </table>
       </div>
-      <PaginationCom  :page-info="page" @get-products="getProducts"></PaginationCom>
-      <ProductModal ref="userProductModal"  @get-products="getProducts" :temp-product ="tempProduct" :is-new="isNew" @update-data="updateProduct" @create-img="createImages"></ProductModal>
-      <DeleteProductModal ref="userDeleteModal"  @get-products="getProducts" :temp-product ="tempProduct" @delete-data="deleteProduct"></DeleteProductModal>
+      <PaginationCom  :page-info="page" @get-products="getProducts" />
+      <ProductModal ref="userProductModal"  @get-products="getProducts" :temp-product ="tempProduct" :is-new="isNew" @update-data="updateProduct" @create-img="createImages" />
+      <DeleteProductModal ref="userDeleteModal"  @get-products="getProducts" :temp-product ="tempProduct" @delete-data="deleteProduct" />
   </div>
 </template>
 <script>
@@ -80,7 +80,6 @@ export default {
       const loader = this.$loading.show()
       this.axios.get(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/admin/products/?page=${page}`)
         .then((res) => {
-        // console.log(res.data);
           this.products = res.data.products
           this.page = res.data.pagination
           loader.hide()

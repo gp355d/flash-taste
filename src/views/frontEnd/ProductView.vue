@@ -21,35 +21,43 @@
       <div class="col-md-6">
         <div class="d-flex flex-column justify-content-center">
           <div>
-            <div class="d-flex align-items-center mb-2">
+            <div class="d-flex align-items-center mb-1">
               <h3 class="h3 text-nowrap me-2 mb-0 fw-bold">{{ product.title }}</h3>
               <div class="d-flex mb-md-0 align-items-center text-decoration-none" @click.prevent="() => addToFavorite(product.id)" style="cursor: pointer;">
                 <span v-if="favoriteList.id.indexOf(product.id) === -1" class="bi bi-heart fs-3"></span>
                 <span v-else class="bi bi-heart-fill fs-3 text-primary"></span>
               </div>
-            </div><span class="badge bg-primary mb-2">{{ product.category }}</span>
+            </div><span class="badge bg-primary mb-1">{{ product.category }}</span>
             <div v-html="product.description"></div>
             <div class="d-flex flex-column">
               <div class="align-self-end">
-                <div class="text-decoration-line-through fs-4"><span class="me-2">原價</span><span>{{ $filters.currency(product.origin_price) }}</span></div>
-                <div class="fs-2 mb-2 fw-bold text-danger"><span class="me-2">特價</span><span>{{ $filters.currency(product.price) }}</span></div>
+                <div class="text-decoration-line-through fs-5"><span class="me-2">原價</span><span>{{ $filters.currency(product.origin_price) }}</span></div>
+                <div class="fs-5 mb-2 fw-bold text-danger"><span class="me-2">特價</span><span>{{ $filters.currency(product.price) }}</span></div>
               </div>
-              <div class="d-flex justify-content-end mb-2">
+            </div>
+          </div>
+        </div>
+        <h4 class="mb-4">商品介紹:</h4>
+        <div v-html="product.content"></div>
+        <div class="d-flex justify-content-end mb-2">
                 <select class="form-select me-2" name="qty" v-model.number="Itemnum">
                   <option :value="num" v-for="num in 5" :key="num + '0'">{{ num }}{{ product.unit }}</option>
                 </select>
-                <button type="button" class="btn btn-primary me-3 me-md-0 text-nowrap"  @click="() => addToCart(product.id, Itemnum)">
-                  加入購物車</button>
+                <button type="button" class="btn btn-primary me-3 me-md-0 text-nowrap" :disabled="isLoadingStatus.ItemId === product.id"  @click="() => addToCart(product.id, Itemnum)">
+        加入購物車</button>
               </div>
-              <h4>商品介紹:</h4>
-              <div v-html="product.content"></div>
-            </div>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-12">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-9">
           </div>
         </div>
       </div>
     </div>
     <div class="row justify-content-center">
-      <h2 class="text-center">相關產品</h2>
+      <h2 class="text-center mb-5">相關產品</h2>
       <div class="col-md-12">
         <div class="swiper-container">
           <swiper :slidesPerView="3"
@@ -78,11 +86,11 @@
                       <img class="product-img img-fluid object-fit-cover w-100" :src="item.imageUrl" style="height: 300px;">
                     </a>
                     <div class="card-body p-2">
-                      <h5 class="card-title fs-4 fw-bold">{{ item.title }}</h5>
-                      <p class="text-truncate p-2" v-html="item.description"></p>
+                      <h5 class="card-title fs-4 mb-1">{{ item.title }}</h5>
+                      <p class="text-truncate" v-html="item.description"></p>
                       <!-- <p class="fw-normal fs-6 mb-2"><span class="d-block" style="height: 48px;line-height:1.2;vertical-align: middle;">{{ item.description.replace(/<[^>]*>|<\/[^>]*>/gm, "") }}</span></p> -->
-                      <div class="d-flex align-items-end fw-bold mb-5">
-                        <span class="text-danger fs-3">{{ $filters.currency(item.price) }}</span>
+                      <div class="d-flex align-items-end mb-5">
+                        <span class="text-danger fs-4">{{ $filters.currency(item.price) }}</span>
                         <del class="text-black">{{ $filters.currency(item.origin_price) }}</del>
                       </div>
                     </div>
@@ -112,7 +120,10 @@ const { VITE_APP_API_URL, VITE_APP_API_NAME } = import.meta.env
 export default {
   data () {
     return {
-      product: {},
+      product: {
+        price: 0,
+        origin_price: 0
+      },
       productsAll: [],
       Itemnum: 1,
       thumbsSwiper: null,
@@ -167,7 +178,8 @@ export default {
       return this.productsAll.filter((item) =>
         this.product.id !== item.id && item.category === this.product.category)
     },
-    ...mapState(ProductStore, ['favoriteList'])
+    ...mapState(ProductStore, ['favoriteList']),
+    ...mapState(CartStore, ['isLoadingStatus'])
   },
   watch: {
     '$route.params': {

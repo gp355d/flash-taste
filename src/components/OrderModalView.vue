@@ -92,9 +92,6 @@
                 </tr>
               </tbody>
             </table>
-            <!-- <div class="d-flex justify-content-between">
-              <span class="fw-bold">付款狀態</span>
-            </div> -->
           </div>
         </div>
       </div>

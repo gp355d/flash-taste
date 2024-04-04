@@ -15,7 +15,7 @@
             <tr v-for="(item) in products" :key="item.id">
               <td style="width: 200px">
                 <div style="height: 100px; background-size: cover; background-position: center"
-                  :style="{'backgroundImage':`url(${item.imageUrl})`}"></div>
+                  :style="{ 'backgroundImage':`url(${item.imageUrl})` }"></div>
               </td>
               <td>
                 {{ item.title }}
@@ -143,7 +143,7 @@
           </div>
         </VForm>
     </div>
-    <DetailProduct ref="userProductModal" :temp-product="product" @add-to-cart="addToCart"></DetailProduct>
+    <DetailProduct ref="userProductModal" :temp-product="product" @add-to-cart="addToCart" />
   </div>
 
 </template>

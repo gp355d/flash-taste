@@ -7,7 +7,10 @@ export default defineStore('Cart', {
     carts: [],
     cartNum: 0,
     total: 0,
-    finalTotal: 0
+    finalTotal: 0,
+    isLoadingStatus: {
+      ItemId: ''
+    }
   }),
   actions: {
     getCarts () {
@@ -37,7 +40,7 @@ export default defineStore('Cart', {
         }
       }
       // const loader = this.$loading.show()
-      // this.isLoadingStatus.ItemId = productId
+      this.isLoadingStatus.ItemId = productId
       axios.post(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/cart`, cart)
         .then((res) => {
           Swal.fire({
@@ -49,7 +52,7 @@ export default defineStore('Cart', {
           })
           // console.log(res.data);
           this.getCarts()
-          // this.isLoadingStatus.ItemId = ''
+          this.isLoadingStatus.ItemId = ''
           // this.$refs.userProductModal.closeModal()
           // loader.hide()
         })

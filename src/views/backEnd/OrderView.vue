@@ -29,7 +29,7 @@
           <template v-for="item in orderList" :key="item.id">
             <tr>
               <td>{{ $filters.date(item.create_at) }}</td>
-              <td ><span v-if="item.user"> {{item.user.email}}</span></td>
+              <td ><span v-if="item.user"> {{ item.user.email }}</span></td>
               <td>
                 <ul class="list-unstyled">
                   <li v-for="product in item.products" :key="product.id">
@@ -38,7 +38,7 @@
                   </li>
                 </ul>
               </td>
-              <td class="text-end">{{$filters.currency(item.total)}}</td>
+              <td class="text-end">{{ $filters.currency(item.total) }}</td>
               <td>
                 <span class="text-success" v-if="item.is_paid">已付款</span>
                 <span v-else>未付款</span>
@@ -58,9 +58,9 @@
         </tbody>
       </table>
     </div>
-      <OrderModalView ref="customerorderModal" @get-products="getOrders" :temp-order="tempOrder" @change-status="updatePaid"></OrderModalView>
-      <DeleteModalView ref="deleteProductmodal" @get-products="getOrders" :temp-product="tempOrder"  @delete-data="deleteOrder" :id=2></DeleteModalView>
-      <PaginationCom :page-info="page" @get-products="getOrders"></PaginationCom>
+      <OrderModalView ref="customerorderModal" @get-products="getOrders" :temp-order="tempOrder" @change-status="updatePaid" />
+      <DeleteModalView ref="deleteProductmodal" @get-products="getOrders" :temp-product="tempOrder"  @delete-data="deleteOrder" :id=2 />
+      <PaginationCom :page-info="page" @get-products="getOrders" />
   </div>
 </template>
 <script>

@@ -7,12 +7,12 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 mb-md-0 mb-2">
-            <ul class="list-group shadow-sm">
-              <li class="list-group-item">產品類別</li>
-              <li class="list-group-item">
+            <ul class="list-group">
+              <li class="list-group-item mb-2">產品類別</li>
+              <li class="list-group-item p-0 border-0 mb-2">
                 <a href="#" class="list-group-item " :class="{ active: category === '' }" @click.prevent="setCategory('')">全部商品</a>
               </li>
-              <li class="list-group-item" v-for="(item,i) in categories" :key="item+i">
+              <li class="list-group-item p-0 border-0 mb-2" v-for="(item,i) in categories" :key="item+i">
                 <a href="#" class="list-group-item  list-group-item-action" :class="{ active: category === item }" @click.prevent="setCategory(item)">{{ item }}</a>
               </li>
             </ul>
@@ -27,31 +27,31 @@
                         <img :src="products.imageUrl" class="product-img card-img-top object-fit-cover mb-2 " :alt="`product-img-${products.id}`" height="200"  @click="more(products.id)">
                       </a>
                       <div class="p-2">
-                        <span class="badge bg-primary mb-2">{{products.category}}</span>
+                        <span class="badge bg-primary mb-1">{{ products.category }}</span>
                         <div class="d-flex align-items-center justify-content-between">
-                          <h5 class="card-title fs-4 fw-bold mb-0">{{ products.title }}</h5>
+                          <h5 class="card-title fs-4 mb-0">{{ products.title }}</h5>
                           <a class="d-block" href="#" @click.prevent="() => addToFavorite(products.id)">
-                            <i class="bi bi-heart fs-2" style="cursor: pointer;"  v-if="favoriteList.id.indexOf(products.id) === -1"></i>
-                            <i v-else class="bi bi-heart-fill fs-2"></i>
+                            <!-- <span class="material-icons fs-2" style="cursor: pointer;">favorite_border</span> -->
+                            <i class="bi bi-heart fs-3" style="cursor: pointer;"  v-if="favoriteList.id.indexOf(products.id) === -1"></i>
+                            <i v-else class="bi bi-heart-fill fs-3"></i>
                           </a>
                         </div>
                         <span class="fw-normal d-block text-truncate" style="height: 48px; vertical-align: middle;">{{ products.description.replace(/<[^>]*>|<\/[^>]*>/gm, "") }}</span>
-                        <div class="fs-5 fw-bold d-flex  align-items-center" v-if="products.price !== products.origin_price">
-                          <span class="fs-2 text-danger fw-bold">{{ $filters.currency(products.price) }}</span>
-                          <del class="fs-5 fw-bold text-black">{{ $filters.currency(products.origin_price) }}</del>
+                        <div class="d-flex align-items-center" v-if="products.price !== products.origin_price">
+                          <span class="fs-4 text-danger fw-normal">{{ $filters.currency(products.price) }}</span>
+                          <del class="fs-5 text-black fw-normal">{{ $filters.currency(products.origin_price) }}</del>
                         </div>
-                        <span class="fs-2 text-danger fw-bold" v-else>{{ $filters.currency(products.origin_price) }}</span>
+                        <span class="fs-3 text-danger fw-normal" v-else>{{ $filters.currency(products.origin_price) }}</span>
                       </div>
                     </div>
-                    <div class="d-grid gap-2 mx-auto col-8 mb-2">
-                      <a class="btn btn-outline-primary fw-normal" @click.prevent="addToCart(products.id)"> 加入購物車</a>
+                    <div class="d-grid gap-2 mb-2 p-2">
+                      <button class="btn btn-outline-primary fw-normal" :disabled="isLoadingStatus.ItemId===products.id" @click.prevent="addToCart(products.id)"> 加入購物車</button>
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
-            <PaginationCom :page-info="page" @get-products="getProducts"></PaginationCom>
+            <PaginationCom :page-info="page" @get-products="getProducts" />
           </div>
         </div>
       </div>
@@ -99,7 +99,9 @@ export default {
     this.getid()
   },
   computed: {
-    ...mapState(ProductStore, ['favoriteList', 'categories', 'category'])
+    ...mapState(ProductStore, ['favoriteList', 'categories', 'category']),
+    ...mapState(CartStore, ['isLoadingStatus'])
+
   },
   components: {
     PaginationCom

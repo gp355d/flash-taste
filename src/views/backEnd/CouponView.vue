@@ -21,7 +21,7 @@
         <tr v-for="(item, i) in couponList" :key="i">
           <td class="text-nowrap">{{ item.title }}</td>
           <td>{{ item.percent }}%</td>
-          <td>{{$filters.date(item.due_date) }}</td>
+          <td>{{ $filters.date(item.due_date) }}</td>
           <td>
             <span v-if="item.is_enabled === 1" class="text-success">啟用</span>
             <span v-else class="text-muted">未啟用</span>
@@ -40,9 +40,9 @@
         </tbody>
         </table>
       </div>
-      <CouponModalCom ref="couponModal" @get-products="getCoupon" :temp-coupon="tempCoupon" :is-new="isNew" @update-coupon="updateCoupon"></CouponModalCom>
-      <DeleteProductModal ref="deleteProductmodal" @get-products="getCoupon" :temp-product="tempCoupon" @delete-data="deleteCoupon" :id=3></DeleteProductModal>
-      <PaginationCom :page-info="page" @get-products="getCoupon"></PaginationCom>
+      <CouponModalCom ref="couponModal" @get-products="getCoupon" :temp-coupon="tempCoupon" :is-new="isNew" @update-coupon="updateCoupon" />
+      <DeleteProductModal ref="deleteProductmodal" @get-products="getCoupon" :temp-product="tempCoupon" @delete-data="deleteCoupon" :id=3 />
+      <PaginationCom :page-info="page" @get-products="getCoupon" />
     </div>
 </template>
 <script>
@@ -73,9 +73,6 @@ export default {
           this.couponList = res.data.coupons
           this.page = res.data.pagination
           loader.hide()
-          //   this.getOrders()
-          //   alert(res.data.message)
-          //   this.$refs.customerorderModal.close()
         })
         .catch((err) => {
           console.log(err)

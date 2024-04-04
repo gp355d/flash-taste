@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white" aria-label="Offcanvas navbar large">
     <div class="container-fluid">
-      <RouterLink class="navbar-brand" to="/">
-        <img src="../assets/logo4-1.svg" alt="" width="80">
-      </RouterLink>
+      <a class="navbar-brand" href="../pages/index.html">
+        <img src="../assets/logo4-1.svg" alt="logo" width="80">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
         aria-controls="offcanvasNavbar2">
         <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
       <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar2"
         aria-labelledby="offcanvasNavbar2Label" data-bs-target="#offcanvasExample">
         <div class="offcanvas-header">
-          <img src="../assets/logo4-1.svg" alt="" width="80px">
+          <img src="../assets/logo4-1.svg" alt="offcanvas-logo" width="80px">
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body" data-bs-dismiss="offcanvas">
@@ -29,14 +29,18 @@
               <div class="">
                 <div v-if="num > 0" class=" text-center carts">
                   <RouterLink class="nav-link me-lg-2 mb-md-0" to="/cart">
-                    <span class="bi bi-cart position-relative end-0">
-                    <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">{{ num
-                    }}</span>
-                    </span>
+                    <div class="d-flex justify-content-center">
+                      <span class="d-block d-lg-none">購物車列表</span>
+                      <span class="bi bi-cart position-relative end-0">
+                      <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">{{ num }}</span>
+                      </span>
+
+                    </div>
                   </RouterLink>
                 </div>
                 <div v-else class=" text-center carts">
                   <RouterLink to="/cart" class="nav-link me-lg-2 mb-lg-0 position-relative end-0 text-center">
+                    購物車列表
                     <span class="bi bi-cart"></span>
                   </RouterLink>
                 </div>

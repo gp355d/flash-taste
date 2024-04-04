@@ -72,7 +72,7 @@
         <!-- main content -->
         <main>
           <div class="container">
-            <router-view></router-view>
+            <router-view/>
           </div>
         </main>
       </div>
@@ -97,7 +97,6 @@ export default {
         .then((res) => {
           console.log(res)
           this.checkUserStatus = res.data.success
-          // alert(this.checkUserStatus)
           Swal.fire({
             position: 'top-end',
             icon: 'info',
@@ -112,7 +111,6 @@ export default {
         })
         .catch((err) => {
           console.log(err)
-          // this.checkUserStatus = err.data.success
           alert(err.response.data.message)
           this.$router.push('/login')
         })
@@ -133,7 +131,6 @@ export default {
     logout () {
       this.axios.post(`${VITE_APP_API_URL}/logout`)
         .then((res) => {
-          //   this.getOrders()
           document.cookie = `hexToken=; expires=${new Date()};`
           Swal.fire({
             position: 'top-end',
@@ -143,7 +140,6 @@ export default {
             timer: 1500
           })
           this.$router.push('/login')
-          //   this.$refs.customerorderModal.close()
         })
         .catch((err) => {
           console.log(err)
