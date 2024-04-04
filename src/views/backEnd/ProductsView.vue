@@ -85,14 +85,19 @@ export default {
           loader.hide()
         })
         .catch((err) => {
-          console.log(err.data)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     openModal (status, item) {
       if (status === 'new') {
         this.tempProduct = { imagesUrl: [] }
         this.isNew = true
-        console.log(this.$refs)
       } else {
         this.tempProduct = { ...item }
         if (!Array.isArray(this.tempProduct.imagesUrl)) {
@@ -109,7 +114,6 @@ export default {
     deleteProduct () {
       this.axios.delete(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/admin/product/${this.tempProduct.id}`)
         .then((res) => {
-          console.log(res)
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -120,7 +124,13 @@ export default {
           this.$refs.userDeleteModal.close()
         })
         .catch((err) => {
-          console.log(err.data)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     updateProduct () {
@@ -147,7 +157,13 @@ export default {
           this.$refs.userProductModal.close()
         })
         .catch((err) => {
-          console.log(err.data)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     createImages () {

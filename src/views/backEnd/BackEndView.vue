@@ -95,7 +95,6 @@ export default {
       this.axios.defaults.headers.common.Authorization = mytoken
       this.axios.post(`${VITE_APP_API_URL}/api/user/check`)
         .then((res) => {
-          console.log(res)
           this.checkUserStatus = res.data.success
           Swal.fire({
             position: 'top-end',
@@ -110,8 +109,13 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err)
-          alert(err.response.data.message)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
           this.$router.push('/login')
         })
     },
@@ -142,7 +146,13 @@ export default {
           this.$router.push('/login')
         })
         .catch((err) => {
-          console.log(err)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     }
   },

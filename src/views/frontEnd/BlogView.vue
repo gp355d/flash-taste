@@ -48,6 +48,7 @@
 </template>
 <script>
 import PaginationCom from '../../components/PaginationCom.vue'
+import Swal from 'sweetalert2'
 const { VITE_APP_API_URL, VITE_APP_API_NAME } = import.meta.env
 export default {
   data () {
@@ -63,7 +64,6 @@ export default {
       this.axios.get(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/articles`)
         .then((res) => {
           this.articleList = res.data.articles
-          console.log(this.articleList)
           const tagsArray = []
           this.articleList.forEach(article => {
             const tags = article.tag
@@ -78,8 +78,13 @@ export default {
           loader.hide()
         })
         .catch((err) => {
-          alert(err.response.data.message)
-          console.log(err.data)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     }
   },

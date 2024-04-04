@@ -212,6 +212,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
 import { mapActions, mapState } from 'pinia'
 import CartStore from '@/stores/CartStore'
 import ProductStore from '../../stores/ProductStore'
+import Swal from 'sweetalert2'
 const { VITE_APP_API_URL, VITE_APP_API_NAME } = import.meta.env
 export default {
   data () {
@@ -227,12 +228,16 @@ export default {
       this.axios.get(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/articles`)
         .then((res) => {
           this.articleList = res.data.articles
-          console.log(this.articleList)
           loader.hide()
         })
         .catch((err) => {
-          alert(err.response.data.message)
-          console.log(err.data)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     ...mapActions(CartStore, ['addToCart'])

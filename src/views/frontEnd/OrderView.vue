@@ -224,7 +224,6 @@ export default {
       this.axios.post(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/order`, { data })
         .then((res) => {
           const loader = this.$loading.show()
-          console.log(res.data)
           Swal.fire({
             position: 'top-end',
             icon: 'success',

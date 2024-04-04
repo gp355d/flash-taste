@@ -16,6 +16,7 @@
   </div>
 </template>
 <script>
+import Swal from 'sweetalert2'
 const { VITE_APP_API_URL, VITE_APP_API_NAME } = import.meta.env
 export default {
   data () {
@@ -34,8 +35,13 @@ export default {
           loader.hide()
         })
         .catch((err) => {
-          alert(err.response.data.message)
-          console.log(err.data)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     }
   },

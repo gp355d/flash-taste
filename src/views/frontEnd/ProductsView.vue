@@ -61,6 +61,7 @@ import PaginationCom from '../../components/PaginationCom.vue'
 import { mapActions, mapState } from 'pinia'
 import CartStore from '@/stores/CartStore'
 import ProductStore from '@/stores/ProductStore'
+import Swal from 'sweetalert2'
 const { VITE_APP_API_URL, VITE_APP_API_NAME } = import.meta.env
 export default {
   data () {
@@ -84,7 +85,13 @@ export default {
           loader.hide()
         })
         .catch((err) => {
-          console.log(err)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     more (id) {

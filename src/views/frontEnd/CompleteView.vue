@@ -97,7 +97,6 @@ export default {
         .then((res) => {
           const { order } = res.data
           this.order = order
-          console.log(this.order)
           loader.hide()
         })
         .catch((err) => {

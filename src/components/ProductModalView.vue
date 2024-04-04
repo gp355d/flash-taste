@@ -109,6 +109,7 @@
 <script>
 import Modal from 'bootstrap/js/dist/modal'
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
+import Swal from 'sweetalert2'
 const { VITE_APP_API_URL, VITE_APP_API_NAME } = import.meta.env
 export default {
   props: ['tempProduct', 'isNew'],
@@ -164,7 +165,6 @@ export default {
       if (file) {
         this.tempProducts.imgPreviewURL = window.URL.createObjectURL(file)
       }
-      console.log(this.tempProduct, this.path, this.url)
     },
     upload () {
       const uploadedFile = this.$refs.files.files[0]
@@ -183,7 +183,13 @@ export default {
           }
         })
         .catch((err) => {
-          console.log(err.data)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     }
   },

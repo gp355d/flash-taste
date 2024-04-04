@@ -88,7 +88,13 @@ export default {
           loader.hide()
         })
         .catch((err) => {
-          console.log(err.response.data.message)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     openModal (item) {
@@ -113,7 +119,13 @@ export default {
           this.getOrders()
         })
         .catch((err) => {
-          console.log(err.response.data.message)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
       this.$refs.deleteProductmodal.close()
     },
@@ -141,7 +153,13 @@ export default {
           this.$refs.customerorderModal.close()
         })
         .catch((err) => {
-          console.log(err)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     }
   },

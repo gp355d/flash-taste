@@ -85,7 +85,13 @@ export default {
           loader.hide()
         })
         .catch((err) => {
-          console.log(err)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     getArticlesingle (articleId) {
@@ -98,7 +104,13 @@ export default {
           loader.hide()
         })
         .catch((err) => {
-          console.log(err)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     openModal (status, item) {
@@ -139,7 +151,13 @@ export default {
           this.$refs.userDeleteModal.close()
         })
         .catch((err) => {
-          console.log(err.data)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err.response.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     updateArticle () {

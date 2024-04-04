@@ -140,7 +140,13 @@ export default {
           loader.hide()
         })
         .catch((err) => {
-          console.log(err)
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: err,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     getCategory () {

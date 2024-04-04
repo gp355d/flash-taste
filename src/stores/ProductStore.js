@@ -53,7 +53,6 @@ export default defineStore('Product', {
       axios.get(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/products/all`)
         .then((res) => {
           const { products } = res.data
-          console.log(products)
           this.products = products
           this.createCategories()
         })
