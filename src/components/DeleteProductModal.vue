@@ -5,17 +5,17 @@
     <div class="modal-content border-0">
       <div class="modal-header bg-danger text-white">
         <h5 id="delProductModalLabel" class="modal-title">
-          <span>刪除{{status}}</span>
+          <span>刪除{{ status }}</span>
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="close"></button>
       </div>
       <div class="modal-body">
         是否刪除
         <template v-if="id===2">
-          <strong class="text-danger">{{tempProduct.id}}</strong> {{status}}(刪除後將無法恢復)。
+          <strong class="text-danger">{{ tempProduct.id }}</strong> {{ status }}(刪除後將無法恢復)。
         </template>
         <template v-else>
-          <strong class="text-danger">{{tempProduct.title}}</strong> {{status}}(刪除後將無法恢復)。
+          <strong class="text-danger">{{ tempProduct.title }}</strong> {{ status }}(刪除後將無法恢復)。
         </template>
       </div>
       <div class="modal-footer">
@@ -51,11 +51,6 @@ export default {
       this.$emit('getProducts')
     }
   },
-  // watch: {
-  //   tempProduct () {
-  //     this.tempProducts = this.tempProduct
-  //   }
-  // },
   mounted () {
     this.delProductModal = new Modal(this.$refs.deleteProduct, {
       keyboard: false,

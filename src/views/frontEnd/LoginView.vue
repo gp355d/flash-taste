@@ -44,7 +44,6 @@ export default {
       }
       this.axios.post('https://ec-course-api.hexschool.io/v2/admin/signin', users)
         .then((res) => {
-        // console.log(res.data);
           const { token, expired } = res.data
           document.cookie = `hexToken=${token};expires=${new Date(expired)}};`
           console.log(token, expired)

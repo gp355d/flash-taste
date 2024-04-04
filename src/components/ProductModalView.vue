@@ -15,7 +15,7 @@
             <div class="col-sm-4" >
               <h3>主要圖片</h3>
               <input type="text" class="form-control" placeholder="請輸入圖片連結" v-model="tempProducts.imageUrl">
-              <img v-if="tempProduct.imageUrl" class="img-fluid" :src="tempProduct.imageUrl" alt="">
+              <img v-if="tempProduct.imageUrl" class="img-fluid" :src="tempProduct.imageUrl" :alt="tempProduct.imageUrl">
               <input type="file" class="form-control" @change="uploadFile" ref="files"/>
               <img v-if="tempProduct.imgPreviewURL" class="img-fluid" :src="tempProduct.imgPreviewURL">
               <button class="btn btn-primary text-white" type="button" @click.prevent="upload" :disabled="!this.file">確認上傳</button>
@@ -25,7 +25,7 @@
                   <label for="imageUrl" class="form-label">輸入圖片網址</label>
                   <input type="text" class="form-control"
                         placeholder="請輸入圖片連結" v-model="tempProducts.imagesUrl[key]">
-                <img class="img-fluid" :src="img" alt="">
+                <img class="img-fluid" :src="img" :alt="img">
 
                 </div>
                   <button class="btn btn-outline-primary btn-sm d-block w-100" @click="createImages"  v-if="tempProduct.imagesUrl.length === 0 || tempProduct.imagesUrl[tempProduct.imagesUrl.length-1]">
@@ -73,7 +73,6 @@
                 <ckeditor id="description" type="text" class="form-control"
                           placeholder="請輸入產品描述" :editor="editor" v-model="tempProducts.description" :config="editorConfig">
                 </ckeditor>
-                <!-- <ckeditor id="description" class="form-control" :editor="editor" v-model="tempProducts.description" :config="editorConfig"></ckeditor> -->
               </div>
               <div class="mb-3">
                 <label for="content" class="form-label">說明內容</label>

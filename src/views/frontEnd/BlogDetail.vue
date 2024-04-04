@@ -2,14 +2,12 @@
   <div class="container p-4">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <h1>{{article.title}}</h1>
-        <!-- <span class="badge bg-primary mb-2 me-2" v-for="tag in article.tag" :key="tag.id">{{ tag }}</span> -->
+        <h1>{{ article.title }}</h1>
         <div>
           <i class="bi bi-calendar me-3"><span class="mb-2 ms-1">{{ $filters.date(article.create_at) }}</span></i>
           <i class="bi bi-tag" v-for="tag in article.tag" :key="tag.id"><span class="mb-2 me-2">{{ tag }}</span></i>
           <span class="text-dark">By {{ article.author }}</span>
         </div>
-        <!-- <p v-html="article.description"></p> -->
         <img :src="article.image" :alt="article.title"  class="img-fluid object-fit-cover mb-5" />
         <img v-if="article.images" :src="article.images" :alt="article.title" class="img-fluid object-fit-cover mb-5" />
         <div v-html="article.content"></div>

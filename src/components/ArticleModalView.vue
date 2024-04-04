@@ -24,7 +24,7 @@
                   <label for="image" class="form-label">文章圖片</label>
                   <v-field type="text" name="文章圖片" class="form-control" id="image" v-model="tempArticles.image" placeholder="請輸入圖片連結"
                   :class="{ 'is-invalid': errors['文章圖片'] }" rules="required"></v-field>
-                  <img v-if="tempArticles.image" class="img-fluid" :src="tempArticles.image" alt="">
+                  <img v-if="tempArticles.image" class="img-fluid" :src="tempArticles.image" :alt="tempArticles.image">
                   <error-message name="文章圖片" class="invalid-feedback"></error-message>
                   <h3>新增多圖</h3>
               <div class="mb-2" v-if="Array.isArray(tempArticles.images)">
@@ -32,7 +32,7 @@
                   <label for="imageUrl" class="form-label">輸入圖片網址</label>
                   <input type="text" class="form-control"
                         placeholder="請輸入圖片連結" v-model="tempArticles.images[key]">
-                <img class="img-fluid" :src="img" alt="">
+                <img class="img-fluid" :src="img" :alt="img">
 
                 </div>
                   <button type="button" class="btn btn-outline-primary btn-sm d-block w-100" @click="createImages"  v-if="tempArticles.images.length === 0 || tempArticles.images[tempArticles.images.length-1]">

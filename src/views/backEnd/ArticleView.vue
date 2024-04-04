@@ -52,9 +52,9 @@
           </tbody>
         </table>
       </div>
-      <ArticleModal ref="articleModal" @get-products="getArticle" :temp-article="tempArticle" :is-new="isNew" @update-data="updateArticle" @create-img="createImages"></ArticleModal>
-      <DeleteProductModal ref="userDeleteModal"  @get-products="getArticle" :temp-product ="tempArticle" @delete-data="deleteArticle" :id=4></DeleteProductModal>
-      <PaginationCom :page-info="page" @get-products="getArticle"></PaginationCom>
+      <ArticleModal ref="articleModal" @get-products="getArticle" :temp-article="tempArticle" :is-new="isNew" @update-data="updateArticle" @create-img="createImages" />
+      <DeleteProductModal ref="userDeleteModal"  @get-products="getArticle" :temp-product ="tempArticle" @delete-data="deleteArticle" :id=4 />
+      <PaginationCom :page-info="page" @get-products="getArticle" />
     </div>
     </div>
   </div>

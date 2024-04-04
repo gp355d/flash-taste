@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="min-vh-100">
-      <NavCom :num="cartNum" :cartIitem="carts"></NavCom>
+      <NavCom :num="cartNum" :cartIitem="carts"/>
       <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#" to="/">Logo</a>

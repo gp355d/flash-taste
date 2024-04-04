@@ -14,35 +14,36 @@
                   <img class="object-fit-cover img-fluid mb-3 rounded-3"
                     :src="article.image"
                     :alt="'img'+`${article.id}`">
+                    <h3 class="fs-4 fw-bold mb-2">{{ article.title }}</h3>
                     <div>
                       <i class="bi bi-calendar me-3"><span class="mb-3 ms-1">{{ $filters.date(article.create_at)}}</span></i>
-                      <i class="bi bi-tag me-2 text-primary" v-for="tag in article.tag" :key="tag"><span>{{tag}}</span></i>
+                      <i class="bi bi-tag me-2 text-primary" v-for="tag in article.tag" :key="tag"><span>{{ tag }}</span></i>
                     </div>
-                  <h3 class="fs-4 fw-bold">{{article.title}}</h3>
                   <p class="mb-0 text-truncate" style="height: 80px;" v-html="article.description"></p>
                   <div class="d-flex justify-content-end">
                     <RouterLink class="btn btn-primary" :to="`/blog/${article.id}`">閱讀更多</RouterLink>
                   </div>
                 </div>
               </div>
+              <PaginationCom :page-info="page" @get-products="getArticle" />
             </div>
-            <div class="col-lg-4 d-none d-lg-block">
-              <h3>Tags</h3>
+            <div class="col-lg-4 d-none d-lg-block border-start border-primary border-2">
+              <h3 class="fw-normal mb-4">Tags</h3>
               <div class="mb-3 text-primary">
                 <span class="bi bi-tag me-2" v-for="(tag,i) in tagsArrays" :key="i">{{ tag }}</span>
               </div>
               <div>
-                <h3>近期文章</h3>
-                <template  v-for="(article,key) in articleList" :key="article.id">
-                  <ul class="list-unstyled text-primary" v-if="key < 3">
-                    <li><RouterLink class="text-primary text-decoration-none" :to="`/blog/${article.id}`">{{ article.title }}</RouterLink></li>
+                <h3 class="fw-normal mb-4">近期文章</h3>
+                <ul class="list-unstyled text-primary">
+                    <template v-for="(article,key) in articleList" :key="article.id">
+                    <li v-if="key < 3"><RouterLink class="text-primary text-decoration-none" :to="`/blog/${article.id}`">{{ article.title }}</RouterLink></li>
+                  </template>
                   </ul>
-                </template>
               </div>
             </div>
           </div>
         </div>
-        <PaginationCom :page-info="page" @get-products="getArticle"></PaginationCom>
+
       </div>
 </template>
 <script>
