@@ -290,8 +290,6 @@ export default {
       this.axios.post(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/order`, { data })
         .then((res) => {
           const loader = this.$loading.show()
-          alert(res.data.message)
-          
           this.$refs.form.resetForm()
           this.getCarts()
           loader.hide()
