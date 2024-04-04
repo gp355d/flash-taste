@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-white" aria-label="Offcanvas navbar large">
     <div class="container-fluid">
-      <a class="navbar-brand" href="../pages/index.html">
+      <RouterLink class="navbar-brand" to="/">
         <img src="../assets/logo4-1.svg" alt="logo" width="80">
-      </a>
+      </RouterLink>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2"
         aria-controls="offcanvasNavbar2">
         <span class="navbar-toggler-icon"></span>
