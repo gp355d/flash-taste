@@ -21,23 +21,23 @@
       <div class="col-md-6">
         <div class="d-flex flex-column justify-content-center">
           <div>
-            <div class="d-flex align-items-center mb-1">
+            <div class="d-flex justify-content-between align-items-center mb-1">
               <h3 class="h3 text-nowrap me-2 mb-0 fw-bold">{{ product.title }}</h3>
               <div class="d-flex mb-md-0 align-items-center text-decoration-none" @click.prevent="() => addToFavorite(product.id)" style="cursor: pointer;">
                 <span v-if="favoriteList.id.indexOf(product.id) === -1" class="bi bi-heart fs-3"></span>
-                <span v-else class="bi bi-heart-fill fs-3 text-primary"></span>
+                <span v-else class="bi bi-heart-fill fs-5 text-primary"></span>
               </div>
             </div><span class="badge bg-primary mb-1">{{ product.category }}</span>
-            <div v-html="product.description"></div>
+            <div style="font-weight: 500;" v-html="product.description"></div>
             <div class="d-flex flex-column">
               <div class="align-self-end">
-                <div class="text-decoration-line-through fs-5"><span class="me-2">原價</span><span>{{ $filters.currency(product.origin_price) }}</span></div>
-                <div class="fs-5 mb-2 fw-bold text-danger"><span class="me-2">特價</span><span>{{ $filters.currency(product.price) }}</span></div>
+                <div class="text-decoration-line-through fs-5 text-end"><span class="me-2">原價</span><span>{{ $filters.currency(product.origin_price) }}</span></div>
+                <div class="fs-4 mb-2 fw-bold text-danger"><span class="me-2">特價</span><span>{{ $filters.currency(product.price) }}</span></div>
               </div>
             </div>
           </div>
         </div>
-        <h4 class="mb-4">商品介紹:</h4>
+        <h4 class="mb-1">商品介紹:</h4>
         <div v-html="product.content"></div>
         <div class="d-flex justify-content-end mb-2">
                 <select class="form-select me-2" name="qty" v-model.number="Itemnum">
@@ -88,7 +88,6 @@
                     <div class="card-body p-2">
                       <h5 class="card-title fs-4 mb-1">{{ item.title }}</h5>
                       <p class="text-truncate" v-html="item.description"></p>
-                      <!-- <p class="fw-normal fs-6 mb-2"><span class="d-block" style="height: 48px;line-height:1.2;vertical-align: middle;">{{ item.description.replace(/<[^>]*>|<\/[^>]*>/gm, "") }}</span></p> -->
                       <div class="d-flex align-items-end mb-5">
                         <span class="text-danger fs-4">{{ $filters.currency(item.price) }}</span>
                         <del class="text-black">{{ $filters.currency(item.origin_price) }}</del>

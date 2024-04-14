@@ -34,7 +34,6 @@
                 </div>
               </div>
             </div>
-            <!-- col-sm-6 end -->
           </div>
         </div>
       </div>

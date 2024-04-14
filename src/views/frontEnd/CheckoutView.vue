@@ -44,7 +44,6 @@
             </tr>
           </tbody>
         </table>
-        <!-- 購物車列表 -->
         <div class="text-end">
           <button class="btn btn-outline-danger" type="button" @click="deleteAllCarts" :disabled="!cart.final_total">清空購物車</button>
         </div>

@@ -53,12 +53,12 @@
         </table>
       </div>
       <PaginationCom  :page-info="page" @get-products="getProducts" />
-      <ProductModal ref="userProductModal"  @get-products="getProducts" :temp-product ="tempProduct" :is-new="isNew" @update-data="updateProduct" @create-img="createImages" />
+      <ProductModalView ref="userProductModal"  @get-products="getProducts" :temp-product ="tempProduct" :is-new="isNew" @update-data="updateProduct" @create-img="createImages" />
       <DeleteProductModal ref="userDeleteModal"  @get-products="getProducts" :temp-product ="tempProduct" @delete-data="deleteProduct" />
   </div>
 </template>
 <script>
-import ProductModal from '../../components/ProductModalView.vue'
+import ProductModalView from '../../components/ProductModalView.vue'
 import PaginationCom from '../../components/PaginationCom.vue'
 import DeleteProductModal from '../../components/DeleteProductModal.vue'
 import Swal from 'sweetalert2'
@@ -171,7 +171,7 @@ export default {
     }
   },
   components: {
-    ProductModal,
+    ProductModalView,
     PaginationCom,
     DeleteProductModal
   },

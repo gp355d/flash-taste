@@ -1,16 +1,20 @@
 import { defineStore } from 'pinia'
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import StatusStore from './StatusStore'
+const status = StatusStore()
 const { VITE_APP_API_URL, VITE_APP_API_NAME } = import.meta.env
 export default defineStore('Product', {
   state: () => ({
+    tempProducts: [],
     favoriteList: {
       id: [],
       list: []
     },
     categories: [],
     category: '',
-    products: []
+    products: [],
+    isLoading: false
   }),
   actions: {
     setCategory (category = '') {
@@ -49,12 +53,24 @@ export default defineStore('Product', {
     getid () {
       this.favoriteList.id = JSON.parse(localStorage.getItem('favoriteId')) || []
     },
+    checkCollection () {
+      this.favoriteList.list = []
+      this.products.forEach((item) => {
+        if (this.favoriteList.id.indexOf(item.id) > -1) { // 未加入
+          this.favoriteList.list.push(item)
+        }
+      })
+    },
     getProductAllData () {
+      status.isLoading = true
       axios.get(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/products/all`)
         .then((res) => {
           const { products } = res.data
           this.products = products
+          this.getid()
+          this.checkCollection()
           this.createCategories()
+          status.isLoading = false
         })
         .catch((err) => {
           alert(err.response.data.message)

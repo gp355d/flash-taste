@@ -40,13 +40,13 @@
         </tbody>
         </table>
       </div>
-      <CouponModalCom ref="couponModal" @get-products="getCoupon" :temp-coupon="tempCoupon" :is-new="isNew" @update-coupon="updateCoupon" />
+      <CouponModalView ref="couponModal" @get-products="getCoupon" :temp-coupon="tempCoupon" :is-new="isNew" @update-coupon="updateCoupon" />
       <DeleteProductModal ref="deleteProductmodal" @get-products="getCoupon" :temp-product="tempCoupon" @delete-data="deleteCoupon" :id=3 />
       <PaginationCom :page-info="page" @get-products="getCoupon" />
     </div>
 </template>
 <script>
-import CouponModalCom from '../../components/CouponModalView.vue'
+import CouponModalView from '../../components/CouponModalView.vue'
 import DeleteProductModal from '../../components/DeleteProductModal.vue'
 import PaginationCom from '../../components/PaginationCom.vue'
 import Swal from 'sweetalert2'
@@ -162,7 +162,7 @@ export default {
     }
   },
   components: {
-    CouponModalCom,
+    CouponModalView,
     DeleteProductModal,
     PaginationCom
   },

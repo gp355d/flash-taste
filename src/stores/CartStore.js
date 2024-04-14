@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import StatusStore from './StatusStore'
+const status = StatusStore()
 const { VITE_APP_API_URL, VITE_APP_API_NAME } = import.meta.env
 export default defineStore('Cart', {
   state: () => ({
@@ -10,10 +12,13 @@ export default defineStore('Cart', {
     finalTotal: 0,
     isLoadingStatus: {
       ItemId: ''
-    }
+    },
+    isLoading: false,
+    loadingItem: ''
   }),
   actions: {
     getCarts () {
+      status.isLoading = true
       axios.get(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/cart`)
         .then((res) => {
           const { data } = res.data
@@ -21,6 +26,7 @@ export default defineStore('Cart', {
           this.cartNum = data.carts.length
           this.total = res.data.data.total
           this.final_total = res.data.data.final_total
+          status.isLoading = false
         })
         .catch((err) => {
           Swal.fire({
@@ -63,17 +69,14 @@ export default defineStore('Cart', {
         })
     },
     changeToCart (item, qty = 1) {
-      // const loader = this.$loading.show()
       const order = {
         data: {
           product_id: item.product_id,
           qty
         }
       }
-      // this.isLoadingStatus.cartLoading = item.id
       axios.put(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/cart/${item.id}`, order)
         .then((res) => {
-          // alert(res.data.message)
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -84,37 +87,44 @@ export default defineStore('Cart', {
           this.getCarts()
         })
         .catch((err) => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: err.response.data.message,
-            showConfirmButton: false,
-            timer: 1500
-          })
+          alert(err.response.data.message)
         })
     },
     deleteCart (cartId) {
-      axios.delete(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/cart/${cartId}`)
-        .then((res) => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: `該商品${res.data.message}`,
-            showConfirmButton: false,
-            timer: 1500
-          })
-          this.loadingItem = ''
-          this.getCarts()
-        }).catch((err) => {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: err.response.data.message,
-            showConfirmButton: false,
-            timer: 1500
-          })
-          this.loadingItem = ''
-        })
+      Swal.fire({
+        title: '確認是否要刪除?',
+        text: '此動作將無法復原',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#46633D',
+        cancelButtonText: '取消',
+        confirmButtonText: '確認刪除'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.delete(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/cart/${cartId}`)
+            .then((res) => {
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: `該商品${res.data.message}`,
+                showConfirmButton: false,
+                timer: 1500
+              })
+              this.loadingItem = ''
+              this.getCarts()
+            }).catch((err) => {
+              Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: err.response.data.message,
+                showConfirmButton: false,
+                timer: 1500
+              })
+              this.loadingItem = ''
+            })
+        }
+      })
     },
     deleteAllCarts () {
       axios.delete(`${VITE_APP_API_URL}/api/${VITE_APP_API_NAME}/carts`)

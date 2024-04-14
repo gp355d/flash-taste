@@ -22,31 +22,30 @@
               <div class="col-md-4" v-for="products in products" :key="products.id">
                 <div class="card mb-3">
                   <div class="fw-bold text-primary">
-                    <div class="">
-                      <a class="product d-block mb-2 rounded-top" @click="more(products.id)" style="cursor: pointer;">
-                        <img :src="products.imageUrl" class="product-img card-img-top object-fit-cover mb-2 " :alt="`product-img-${products.id}`" height="200"  @click="more(products.id)">
+                      <a class="product d-block rounded-top" @click="more(products.id)" style="cursor: pointer;">
+                        <img :src="products.imageUrl" class="product-img card-img-top object-fit-cover" :alt="`product-img-${products.id}`" height="200"  @click="more(products.id)">
                       </a>
-                      <div class="p-2">
-                        <span class="badge bg-primary mb-1">{{ products.category }}</span>
-                        <div class="d-flex align-items-center justify-content-between">
-                          <h5 class="card-title fs-4 mb-0">{{ products.title }}</h5>
-                          <a class="d-block" href="#" @click.prevent="() => addToFavorite(products.id)">
-                            <!-- <span class="material-icons fs-2" style="cursor: pointer;">favorite_border</span> -->
-                            <i class="bi bi-heart fs-3" style="cursor: pointer;"  v-if="favoriteList.id.indexOf(products.id) === -1"></i>
-                            <i v-else class="bi bi-heart-fill fs-3"></i>
-                          </a>
+                      <div class="p-3">
+                        <div class="d-flex flex-column justify-content-start">
+                          <span class="badge bg-primary mb-1" style="width: 40px;">{{ products.category }}</span>
+                          <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="card-title fs-4 mb-0">{{ products.title }}</h5>
+                            <a class="d-block" href="#" @click.prevent="() => addToFavorite(products.id)">
+                              <i class="bi bi-heart fs-5" style="cursor: pointer;"  v-if="favoriteList.id.indexOf(products.id) === -1"></i>
+                              <i v-else class="bi bi-heart-fill fs-5"></i>
+                            </a>
+                          </div>
+                          <span class="fw-normal d-block text-truncate" style="height: 48px; vertical-align: middle;">{{ products.description.replace(/<[^>]*>|<\/[^>]*>/gm, "") }}</span>
+                          <div class="d-flex align-items-end" v-if="products.price !== products.origin_price">
+                            <span class="fs-4 text-danger fw-bold me-2">{{ $filters.currency(products.price) }}</span>
+                            <del class="fs-6 text-black fw-normal">{{ $filters.currency(products.origin_price) }}</del>
+                          </div>
+                          <span class="fs-3 text-danger fw-normal" v-else>{{ $filters.currency(products.origin_price) }}</span>
+                          <div class="d-grid gap-2">
+                            <button class="btn btn-outline-primary fw-normal" :disabled="isLoadingStatus.ItemId===products.id" @click.prevent="addToCart(products.id)"> 加入購物車</button>
+                          </div>
                         </div>
-                        <span class="fw-normal d-block text-truncate" style="height: 48px; vertical-align: middle;">{{ products.description.replace(/<[^>]*>|<\/[^>]*>/gm, "") }}</span>
-                        <div class="d-flex align-items-center" v-if="products.price !== products.origin_price">
-                          <span class="fs-4 text-danger fw-normal">{{ $filters.currency(products.price) }}</span>
-                          <del class="fs-5 text-black fw-normal">{{ $filters.currency(products.origin_price) }}</del>
-                        </div>
-                        <span class="fs-3 text-danger fw-normal" v-else>{{ $filters.currency(products.origin_price) }}</span>
                       </div>
-                    </div>
-                    <div class="d-grid gap-2 mb-2 p-2">
-                      <button class="btn btn-outline-primary fw-normal" :disabled="isLoadingStatus.ItemId===products.id" @click.prevent="addToCart(products.id)"> 加入購物車</button>
-                    </div>
                   </div>
                 </div>
               </div>

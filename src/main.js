@@ -1,4 +1,3 @@
-// import './assets/main.css'
 import { createApp } from 'vue'
 import './assets/all.scss'
 import 'bootstrap/dist/js/bootstrap.esm.min'

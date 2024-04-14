@@ -26,11 +26,13 @@
               <RouterLink class="nav-link me-lg-2 mb-3 mb-lg-0 text-center" to="/blog">專欄文章</RouterLink>
             </li>
             <li class="nav-item">
-              <div class="">
+              <RouterLink class="nav-link me-lg-2 mb-3 mb-lg-0 text-center" to="/favorite">收藏產品</RouterLink>
+            </li>
+            <li class="nav-item">
                 <div v-if="num > 0" class=" text-center carts">
                   <RouterLink class="nav-link me-lg-2 mb-md-0" to="/cart">
                     <div class="d-flex justify-content-center">
-                      <span class="d-block d-lg-none">購物車列表</span>
+                      <span class="d-block d-lg-none me-2">購物車列表</span>
                       <span class="bi bi-cart position-relative end-0">
                       <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">{{ num }}</span>
                       </span>
@@ -44,7 +46,6 @@
                     <span class="bi bi-cart"></span>
                   </RouterLink>
                 </div>
-              </div>
             </li>
           </ul>
         </div>

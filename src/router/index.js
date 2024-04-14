@@ -1,6 +1,4 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-// import HomeView from '../views/frontEnd/HomeView.vue'
-
 const routes = [
   {
     path: '/',
@@ -60,6 +58,11 @@ const routes = [
         path: 'blog/:id',
         component: () => import('../views/frontEnd/BlogDetail.vue'),
         meta: { title: '單一文章' }
+      },
+      {
+        path: 'favorite',
+        component: () => import('../views/frontEnd/FavoriteView.vue'),
+        meta: { title: '收藏產品' }
       }
     ]
   },

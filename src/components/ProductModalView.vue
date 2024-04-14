@@ -37,68 +37,72 @@
               </div>
 
             </div>
-            <div class="col-sm-8">
+            <VForm class="col-sm-8" v-slot="{ errors }" ref="form">
               <div class="mb-3">
                 <label for="title" class="form-label">標題</label>
-                <input id="title" type="text" class="form-control" placeholder="請輸入標題" v-model="tempProducts.title">
+                <VField id="title" name="標題" type="text" class="form-control" placeholder="請輸入標題" v-model="tempProducts.title" :class="{ 'is-invalid': errors['標題'] }" rules="required">
+                  </VField>
+                  <ErrorMessage name="標題" class="invalid-feedback"></ErrorMessage>
+                  <div class="row">
+                    <div class="mb-3 col-md-6">
+                      <label for="category" class="form-label">分類</label>
+                      <VField id="category" name="分類" type="text" class="form-control"
+                              placeholder="請輸入分類" v-model="tempProducts.category" :class="{ 'is-invalid': errors['分類'] }" rules="required" />
+                              <ErrorMessage name="分類" class="invalid-feedback"></ErrorMessage>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                      <label for="price" class="form-label">單位</label>
+                      <VField id="unit" name="單位" type="text" class="form-control" placeholder="請輸入單位" v-model="tempProducts.unit" :class="{ 'is-invalid': errors['單位'] }" rules="required" />
+                      <ErrorMessage name="單位" class="invalid-feedback"></ErrorMessage>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="mb-3 col-md-6">
+                      <label for="origin_price" class="form-label">原價</label>
+                      <VField id="origin_price"  name="原價" type="number" min="0" class="form-control" placeholder="請輸入原價" v-model.number="tempProducts.origin_price" :class="{ 'is-invalid': errors['原價'] }" rules="required" />
+                        <ErrorMessage name="原價" class="invalid-feedback"></ErrorMessage>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                      <label for="price" class="form-label">售價</label>
+                      <VField id="price" name="售價" type="number" min="0" class="form-control"
+                              placeholder="請輸入售價" v-model.number="tempProducts.price" :class="{ 'is-invalid': errors['售價'] }" rules="required"/>
+                              <ErrorMessage name="售價" class="invalid-feedback"></ErrorMessage>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="mb-3">
+                    <label for="description" class="form-label">產品描述</label>
+                    <ckeditor id="description" type="text" class="form-control"
+                              placeholder="請輸入產品描述" :editor="editor" v-model="tempProducts.description" :config="editorConfig">
+                    </ckeditor>
+                  </div>
+                  <div class="mb-3">
+                    <label for="content" class="form-label">說明內容</label>
+                    <ckeditor id="description" type="text" class="form-control"
+                              placeholder="請輸入說明內容" :editor="editor" :config="editorConfig" v-model="tempProducts.content">
+                    </ckeditor>
+                  </div>
+                  <div class="mb-3">
+                    <span>上架狀態</span>
+                    <div class="form-check form-switch">
+                      <input id="is_enabled" class="form-check-input" type="checkbox"
+                              :true-value="1" :false-value="0" v-model="tempProducts.is_enabled">
+                      <label class="form-check-label" for="is_enabled">
+                        <span v-if="tempProducts.is_enabled">已上架</span>
+                        <span v-else>未上架</span>
+                      </label>
+                    </div>
+                  </div>
               </div>
 
-              <div class="row">
-                <div class="mb-3 col-md-6">
-                  <label for="category" class="form-label">分類</label>
-                  <input id="category" type="text" class="form-control"
-                          placeholder="請輸入分類" v-model="tempProducts.category">
-                </div>
-                <div class="mb-3 col-md-6">
-                  <label for="price" class="form-label">單位</label>
-                  <input id="unit" type="text" class="form-control" placeholder="請輸入單位" v-model="tempProducts.unit">
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="mb-3 col-md-6">
-                  <label for="origin_price" class="form-label">原價</label>
-                  <input id="origin_price" type="number" min="0" class="form-control" placeholder="請輸入原價" v-model.number="tempProducts.origin_price">
-                </div>
-                <div class="mb-3 col-md-6">
-                  <label for="price" class="form-label">售價</label>
-                  <input id="price" type="number" min="0" class="form-control"
-                          placeholder="請輸入售價" v-model.number="tempProducts.price">
-                </div>
-              </div>
-              <hr>
-
-              <div class="mb-3">
-                <label for="description" class="form-label">產品描述</label>
-                <ckeditor id="description" type="text" class="form-control"
-                          placeholder="請輸入產品描述" :editor="editor" v-model="tempProducts.description" :config="editorConfig">
-                </ckeditor>
-              </div>
-              <div class="mb-3">
-                <label for="content" class="form-label">說明內容</label>
-                <ckeditor id="description" type="text" class="form-control"
-                          placeholder="請輸入說明內容" :editor="editor" :config="editorConfig" v-model="tempProducts.content">
-                </ckeditor>
-              </div>
-              <div class="mb-3">
-                <span>上架狀態</span>
-                <div class="form-check form-switch">
-                  <input id="is_enabled" class="form-check-input" type="checkbox"
-                          :true-value="1" :false-value="0" v-model="tempProducts.is_enabled">
-                  <label class="form-check-label" for="is_enabled">
-                    <span v-if="tempProducts.is_enabled">已上架</span>
-                    <span v-else>未上架</span>
-                  </label>
-                </div>
-              </div>
-            </div>
+            </VForm>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" @click="close">
             取消
           </button>
-          <button type="button" class="btn btn-primary" @click="updateProduct">
+          <button type="submit" class="btn btn-primary" @click="updateProduct">
             確認
           </button>
         </div>

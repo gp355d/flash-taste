@@ -1,39 +1,7 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper bg-light">
     <div class="min-vh-100">
       <NavCom :num="cartNum" :cartIitem="carts"/>
-      <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#" to="/">Logo</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <RouterLink class="nav-link" to="/products">產品列表</RouterLink>
-              </li>
-              <li class="nav-item">
-                <RouterLink class="nav-link" to="/about">關於我們</RouterLink>
-              </li>
-              <li class="nav-item">
-                <RouterLink class="nav-link" to="/checkout">結帳頁</RouterLink>
-              </li>
-              <li class="nav-item">
-                <RouterLink v-if="cartNum > 0" to="/cart" class="position-relative end-0">
-                  <span class="bi bi-cart fs-4"></span>
-                  <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">{{ cartNum
-                  }}</span>
-                </RouterLink>
-                <RouterLink v-else to="/cart" class="position-relative end-0">
-                  <span class="bi bi-cart fs-4"></span>
-                </RouterLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav> -->
         <router-view />
     </div>
   </div>

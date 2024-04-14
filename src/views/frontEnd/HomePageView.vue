@@ -1,10 +1,10 @@
 <template>
-  <section class="">
+  <section>
     <div class="d-flex flex-column justify-content-center align-items-center px-5 px-lg-0" style="background-image: url(https://images.unsplash.com/photo-1522747776116-64ee03be1dad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);background-repeat: no-repeat;background-size: cover;height: 450px;background-position: center;">
       <div class="d-flex flex-column justify-content-center align-items-center px-lg-5 py-lg-2  px-2 py-1" style="background: rgba(255, 255, 255, 0.1);border-radius: 24px;backdrop-filter: blur(3px);">
-        <img src="../../assets/logonew-01.svg" alt="logo" width="260" height="160" class="img-fluid"  />
-        <h3 class="fs-1 fs-lg-2 text-center mb-0">療癒一杯，感受生活的美好</h3>
-        <h1 class="fs-2 fs-lg-3 text-center text-gray-dark mb-5">尋找心靈的寧靜之旅</h1>
+        <img src="../../assets/logonew-02.svg" alt="logo" width="260" height="160" class="img-fluid"  />
+        <h3 class="fs-1 fs-lg-2 text-center text-white mb-0">療癒一杯，感受生活的美好</h3>
+        <h1 class="fs-2 fs-lg-3 text-center text-white text-gray-dark mb-5">尋找心靈的寧靜之旅</h1>
         <a href="#/products" class="btn btn-primary fs-lg-5 px-5 py-3 px-lg-6">立即探索</a>
       </div>
     </div>
@@ -20,7 +20,7 @@
         <div class="d-flex flex-column justify-content-center align-items-center  align-items-md-start rounded-3 bg-white p-4" style="min-height: 250px;">
           <div class="text-center text-md-start">
             <h2 class="mb-3">優質的烘焙技術</h2>
-              <span class="">我們以優質的烘焙技術為基礎，精心挑選最優質的茶葉，將其烘焙至完美的狀態。每一杯茶都是我們匠心獨具的傑作，充滿著濃郁的香氣和獨特的風味。我們堅持以最優質的茶葉和最精湛的工藝，為您呈現一場真正的品茶饗宴。讓我們的烘焙技術帶您進入茶的世界，品味其中的無盡魅力。</span>
+              <span>我們以優質的烘焙技術為基礎，精心挑選最優質的茶葉，將其烘焙至完美的狀態。每一杯茶都是我們匠心獨具的傑作，充滿著濃郁的香氣和獨特的風味。我們堅持以最優質的茶葉和最精湛的工藝，為您呈現一場真正的品茶饗宴。讓我們的烘焙技術帶您進入茶的世界，品味其中的無盡魅力。</span>
           </div>
         </div>
       </li>
@@ -35,7 +35,7 @@
         <div class="rounded-3 bg-white d-flex flex-column justify-content-center p-4" style="min-height: 250px;">
           <div class="text-center text-md-start">
             <h2 class="mb-3">風味多樣的選擇</h2>
-              <span class="">無論您是喜歡清新淡雅的綠茶，還是偏愛濃郁香醇的紅茶；無論您追求花果香氣的烏龍茶，還是喜愛清香爽口的白茶，我們都能滿足您的味蕾。在這裡，您可以找到各種風味多樣的茶葉，每一種茶都有其獨特的魅力和風味。讓我們的茶葉為您帶來一場風味之旅，讓您盡情享受茶的世界。</span>
+              <span>無論您是喜歡清新淡雅的綠茶，還是偏愛濃郁香醇的紅茶；無論您追求花果香氣的烏龍茶，還是喜愛清香爽口的白茶，我們都能滿足您的味蕾。在這裡，您可以找到各種風味多樣的茶葉，每一種茶都有其獨特的魅力和風味。讓我們的茶葉為您帶來一場風味之旅，讓您盡情享受茶的世界。</span>
           </div>
         </div>
       </li>
@@ -50,45 +50,44 @@
         <div class="d-flex flex-column justify-content-center align-items-center  align-items-md-start rounded-3 bg-white p-4" style="min-height: 250px;">
           <div class="text-center text-md-start">
             <h2 class="mb-3">健康享受的美好時刻</h2>
-              <span class="">在這個忙碌的生活中，讓我們一起停下腳步，享受一杯健康的茶，為身心注入一絲寧靜與愉悅。我們精心挑選最優質的茶葉，為您帶來清新、醇厚、香氣四溢的茶品。無論是清晨的第一杯茶，還是下午的片刻悠閒，讓我們一起沉浸在茶的世界中，享受健康的美好時刻。</span>
+              <span>在這個忙碌的生活中，讓我們一起停下腳步，享受一杯健康的茶，為身心注入一絲寧靜與愉悅。我們精心挑選最優質的茶葉，為您帶來清新、醇厚、香氣四溢的茶品。無論是清晨的第一杯茶，還是下午的片刻悠閒，讓我們一起沉浸在茶的世界中，享受健康的美好時刻。</span>
           </div>
         </div>
       </li>
     </ul>
     </section>
   </div>
-    <div class="">
       <div class="container mb-3 py-5">
         <h2 class="text-center text-primary fw-bold mb-5">精選產品</h2>
         <div class="row">
           <template v-for="(item,i) in products" :key="item.id">
             <div class="col-lg-3 col-md-6 mb-3" v-if="i < 4">
-              <div class="card h-100 border border-1 rounded-top">
+              <div class="card border border-1 rounded-top">
                 <a href="" @click.prevent="this.$router.push(`/product/${item.id}`)">
                   <img class="img-fluid object-fit-cover rounded-top position-relative w-100" style="height: 300px;"
                     :src="item.imageUrl"
                     :alt="`img-${item.title}`">
                 </a>
-                  <div class="p-3">
-                    <h3 class="fs-4 fw-normal">{{ item.title }}</h3>
-                    <!-- <div  v-html="item.description"></div> -->
+                  <div class="p-4">
+                    <h3 class="fs-4 fw-bold">{{ item.title }}</h3>
                     <div v-if="item.price !== item.origin_price">
-                      <span class="fs-3 text-danger">{{ $filters.currency(item.price) }}</span>
-                      <del class="fs-2 ms-2 fw-normal">{{ $filters.currency(item.origin_price) }}</del>
+                      <span class="fs-3 text-danger fw-bold">{{ $filters.currency(item.price) }}</span>
+                      <del class="fs-6 ms-2 fw-normal">{{ $filters.currency(item.origin_price) }}</del>
                     </div>
-                    <span v-else class="fs-3 text-danger">{{ $filters.currency(item.origin_price) }}</span>
+                    <span v-else class="fs-3 text-danger fw-bold">{{ $filters.currency(item.origin_price) }}</span>
+                    <div class="text-center">
+                    <a class="btn-lg btn btn-outline-primary d-block text-nowrap" @click.prevent="addToCart(item.id)">加入購物車</a>
                   </div>
-                  <div class="text-center">
-                    <a class="btn-lg btn btn-primary text-nowrap" @click.prevent="addToCart(item.id)">加入購物車</a>
-                  </div>
-                  <div class="d-grid gap-2 mx-auto col-8 mb-2">
+                  <div class="d-grid gap-2 mx-auto col-8">
                 </div>
+
+                  </div>
+
               </div>
             </div>
           </template>
         </div>
       </div>
-    </div>
     <div class="container mb-3 py-5">
       <div class="row flex-row-reverse">
         <div class="col-md-6 mb-md-0 mb-3">

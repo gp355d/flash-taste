@@ -59,13 +59,13 @@
       </table>
     </div>
       <OrderModalView ref="customerorderModal" @get-products="getOrders" :temp-order="tempOrder" @change-status="updatePaid" />
-      <DeleteModalView ref="deleteProductmodal" @get-products="getOrders" :temp-product="tempOrder"  @delete-data="deleteOrder" :id=2 />
+      <DeleteProductModal ref="deleteProductmodal" @get-products="getOrders" :temp-product="tempOrder"  @delete-data="deleteOrder" :id=2 />
       <PaginationCom :page-info="page" @get-products="getOrders" />
   </div>
 </template>
 <script>
 import OrderModalView from '../../components/OrderModalView.vue'
-import DeleteModalView from '../../components/DeleteProductModal.vue'
+import DeleteProductModal from '../../components/DeleteProductModal.vue'
 import PaginationCom from '../../components/PaginationCom.vue'
 import Swal from 'sweetalert2'
 const { VITE_APP_API_URL, VITE_APP_API_NAME } = import.meta.env
@@ -165,7 +165,7 @@ export default {
   },
   components: {
     OrderModalView,
-    DeleteModalView,
+    DeleteProductModal,
     PaginationCom
   },
   mounted () {

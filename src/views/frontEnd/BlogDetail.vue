@@ -1,16 +1,20 @@
 <template>
-  <div class="container p-4">
+  <div class="container py-5">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <h1>{{ article.title }}</h1>
-        <div>
+        <h1 class="fs-3 mb-2">{{ article.title }}</h1>
+        <div class="mb-3">
           <i class="bi bi-calendar me-3"><span class="mb-2 ms-1">{{ $filters.date(article.create_at) }}</span></i>
           <i class="bi bi-tag" v-for="tag in article.tag" :key="tag.id"><span class="mb-2 me-2">{{ tag }}</span></i>
           <span class="text-dark">By {{ article.author }}</span>
         </div>
-        <img :src="article.image" :alt="article.title"  class="img-fluid object-fit-cover mb-5" />
-        <img v-if="article.images" :src="article.images" :alt="article.title" class="img-fluid object-fit-cover mb-5" />
-        <div v-html="article.content"></div>
+        <img :src="article.image" :alt="article.title"  class="w-100 img-fluid object-fit-cover mb-5" />
+        <template v-if="article.images">
+          <img :src="article.images[1]" :alt="article.title" class="img-fluid object-fit-cover mb-5" />
+        </template>
+        <div class="fs-5" v-html="article.content">
+        </div>
+        <img v-if="article.images" :src="article.images[2]" :alt="article.title" class="w-100 img-fluid object-fit-cover mb-5" />
       </div>
     </div>
   </div>

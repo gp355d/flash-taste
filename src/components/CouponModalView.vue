@@ -28,7 +28,7 @@
           <div class="mb-3">
             <label for="due_date">到期日</label>
             <input type="date" class="form-control" id="due_date"
-                   v-model="due_date" min="">
+                   v-model="due_date" :min="due_date">
           </div>
           <div class="mb-3">
             <label for="price">折扣百分比</label>
@@ -69,7 +69,8 @@ export default {
     return {
       couponModal: '',
       tempCoupons: {},
-      due_date: ''
+      due_date: '',
+      minDateISO: ''
     }
   },
   methods: {
@@ -91,20 +92,25 @@ export default {
         .toISOString().split('T');
       [this.due_date] = dateAndTime
     },
-    due_date () {
-      this.tempCoupons.due_date = Math.floor(new Date(this.due_date) / 1000)
-      // 取得今天的日期物件
-      const today = new Date()
-      // 設定最小日期為本周的周日
-      const minDate = new Date(today.getFullYear(), today.getMonth(), today.getDate())
-      // 轉換日期為ISO格式 (yyyy-mm-dd)
-      const minDateISO = minDate.toISOString().split('T')[0]
-      // 設定最小和最大日期
-      const dateInput = document.getElementById('due_date')
-      dateInput.min = minDateISO
+    due_date (newValue) {
+      // 獲取當前時間對象
+      const currentDate = new Date()
+      // 將時間部分設置為零時刻，以便比較
+      currentDate.setHours(0, 0, 0, 0)
+      // 將使用者選擇的日期字串轉換為日期物件
+      const selectedDate = new Date(newValue)
+      // 如果用戶選擇的日期早於當前日期，則將選擇的日期重置為當前日期
+      if (selectedDate < currentDate) {
+        this.due_date = this.minDateISO
+      }
     }
   },
   mounted () {
+    const today = new Date()
+    // 將小時、分鐘、秒和毫秒設為零，以確保最小期為今天的零時零分零秒
+    today.setDate(today.getDate() + 1)
+    // 轉換最小日期為 ISO 格式 (yyyy-mm-dd)，並設置
+    this.minDateISO = today.toISOString().split('T')[0]
     this.couponModal = new Modal(this.$refs.couponModal, {
       keyboard: false,
       backdrop: 'static'

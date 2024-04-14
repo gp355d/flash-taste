@@ -46,7 +46,6 @@
       </div>
     </div>
   </div>
-  <div class="">
     <div class="container mb-3 py-5">
       <h2 class="text-primary text-center mb-5">三大堅持</h2>
       <div class="row text-center text-white">
@@ -80,7 +79,6 @@
         </div>
       </div>
     </div>
-  </div>
   <div class="container py-5">
     <div class="row">
       <div class="col-md-6">

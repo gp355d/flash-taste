@@ -1,78 +1,83 @@
 <template>
     <div class="container">
       <div class="pt-4 pb-3">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-9 col-md-7 timeline">
-          </div>
-        </div>
-        <div class="row mb-2">
-          <div class="col-3 col-md-5">
-            <div class="timeline-pointer text-center step-1 active">
-              <p>購物清單確認</p>
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-9 col-md-7 timeline">
             </div>
           </div>
-          <div class="col-6 col-md-2">
-            <div class="timeline-pointer text-center step-2 active">
-              <p>填寫訂單</p>
+          <div class="row mb-2">
+            <div class="col-3 col-md-5">
+              <div class="timeline-pointer text-center step-1 active">
+                <p>購物清單確認</p>
+              </div>
             </div>
-          </div>
-          <div class="col-3 col-md-5">
-            <div class="timeline-pointer text-center step-3 active">
-              <p>購物完成</p>
+            <div class="col-6 col-md-2">
+              <div class="timeline-pointer text-center step-2 active">
+                <p>填寫訂單</p>
+              </div>
             </div>
-          </div>
-        </div>
-        <router-link to="/products" class="d-inline-flex align-items-center text-decoration-none">
-          <span class="material-icons">keyboard_return</span>
-          回商品列表
-        </router-link>
-      </div>
-    </div>
-      <div class="order-summary p-4">
-        <h4>訂單成立</h4>
-        <p class="mb-4">您已經完成本次購物，當確認訂購資訊無誤及付款完成後，我們將立即出貨，感謝您訂購商品</p>
-        <div class="row mb-2">
-          <div class="col-md-6">
-            <div class="row mb-4">
-              <p class="h3 fw-normal mb-4">商品明細:</p>
-              <div class="col-md-12">
-                <ul class="list-unstyled">
-                  <li class="row mb-3 g-0 border" v-for="item in order.products" :key="item.id">
-                    <div class="col-md-7">
-                      <img :src="item.product.imageUrl"
-                        :alt="item.product.title" class="img-fluid">
-                    </div>
-                    <div class="col-md-5 d-flex flex-row flex-column justify-content-md-center p-3">
-                      <span class="d-block fs-3 fs-md-4">{{ item.product.title }}</span>
-                      <div class="d-flex fs-4 fs-md-5">
-                        <span class="me-2">{{ $filters.currency(item.product.price) }}</span>
-                        <span>X{{ item.qty }}</span>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+            <div class="col-3 col-md-5">
+              <div class="timeline-pointer text-center step-3 active">
+                <p>購物完成</p>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <p class="h3 fw-normal mb-4">顧客資訊:</p>
-            <p>姓名:{{ order.user.name }}</p>
-            <p>地址:{{ order.user.address }}</p>
-            <p>電話:{{ order.user.tel }}</p>
-            <p>訂單編號:{{ order.id }}</p>
-            <p>訂單狀態:{{ order.is_paid ? '付款完成' : '尚未付款' }}</p>
-          </div>
         </div>
-        <div class="row">
-            <div class="col-md-8">
-              <p class="h2 fw-normal">總金額:<strong class="text-danger"> {{  $filters.currency(order.total) }}</strong></p>
+      </div>
+
+      <div class="row justify-content-center px-3">
+        <div class="col-md-8 bg-white p-3 shadow-sm">
+          <h3 class="text-primary mb-5">訂單已成立</h3>
+        </div>
+      </div>
+      <div class="row justify-content-center px-3">
+          <div class="col-md-8 bg-white p-3 shadow-sm">
+            <h4 class="mb-2">購買品項</h4>
+            <div class="row mb-3 justify-content-center align-items-center" v-for="item in order.products" :key="item.id">
+              <div class="col-3">
+                <img :src="item.product.imageUrl"
+                  :alt="item.product.title" class="img-fluid">
+              </div>
+              <div class="col-6 text-center">
+                <span>{{ item.product.title }}</span>
+                <span>X{{ item.qty }}</span>
+              </div>
+              <div class="col-3 text-end">
+                <span class="me-2">{{ $filters.currency(item.product.price) }}</span>
+              </div>
+              <div class="row pt-3">
+                <hr class="w-100 col-md-9 border-2 border-top">
+              </div>
+              <div class="accordion" id="accordionExample">
+              </div>
+            </div>
+            <div class="accordion" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    查看詳細資訊
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                  data-bs-parent="#accordionFlushExample">
+                  <div class="p-3">
+                    <p>顧客姓名:{{ order.user.name }}</p>
+                    <p>顧客地址:{{ order.user.address }}</p>
+                    <p>聯絡電話:{{ order.user.tel }}</p>
+                    <p>訂單編號:{{ order.id }}</p>
+                    <p>訂單狀態:{{ order.is_paid ? '付款完成' : '尚未付款' }}</p>
+                    <p class="fs-5">總金額:<strong class="text-danger"> {{  $filters.currency(order.total) }}</strong></p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-primary" @click.prevent="() => pay()" v-if="order.is_paid!==true">前往付款</button>
-            <div v-else></div>
-          </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" @click.prevent="() => pay()" v-if="order.is_paid!==true">前往付款</button>
+        <div v-else></div>
       </div>
     </div>
 </template>
@@ -125,15 +130,8 @@ export default {
   }
 }
 </script>
-<style>
-.order-summary {
-  border: 1px solid #dee2e6;
-  border-radius: 15px;
-  margin-bottom: 20px;
-}
-
-.order-summary h4 {
-  margin-bottom: 20px;
-}
-
+<style scoped>
+  .wrapper{
+    background-color: rgb(40, 66, 66);
+  }
 </style>
