@@ -1,8 +1,8 @@
 <template>
-  <section>
+  <section data-aos="fade-up" data-aos-duration="600">
     <div class="d-flex flex-column justify-content-center align-items-center px-5 px-lg-0" style="background-image: url(https://images.unsplash.com/photo-1522747776116-64ee03be1dad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);background-repeat: no-repeat;background-size: cover;height: 450px;background-position: center;">
       <div class="d-flex flex-column justify-content-center align-items-center px-lg-5 py-lg-2  px-2 py-1" style="background: rgba(255, 255, 255, 0.1);border-radius: 24px;backdrop-filter: blur(3px);">
-        <img src="../../assets/logonew-02.svg" alt="logo" width="260" height="160" class="img-fluid"  />
+        <img src="../../assets/logo4-1.svg" alt="logo" width="260" height="160" class="img-fluid mb-3"  />
         <h3 class="fs-1 fs-lg-2 text-center text-white mb-0">療癒一杯，感受生活的美好</h3>
         <h1 class="fs-2 fs-lg-3 text-center text-white text-gray-dark mb-5">尋找心靈的寧靜之旅</h1>
         <a href="#/products" class="btn btn-primary fs-lg-5 px-5 py-3 px-lg-6">立即探索</a>
@@ -12,7 +12,7 @@
   <div class="py-5">
     <section class="container" >
     <h2 class="text-center text-primary fw-bold mb-5">產品特色</h2>
-    <ul class="row d-block d-md-flex align-items-center justify-content-md-end list-unstyled position-relative mb-5">
+    <ul class="row d-block d-md-flex align-items-center justify-content-md-end list-unstyled position-relative mb-5" data-aos="flip-left" data-aos-offset="150">
       <li class="col-md-8">
         <img class="rounded-3 indexAboutImg img-fluid object-fit-cover w-100" src= "https://images.unsplash.com/photo-1582650859079-ee63913ecb84?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" style="height: 400px;">
       </li>
@@ -27,11 +27,11 @@
     </ul>
     </section>
     <section class="container" >
-    <ul class="row d-block d-md-flex align-items-center list-unstyled position-relative mb-5">
+    <ul class="row d-block d-md-flex align-items-center list-unstyled position-relative mb-5" data-aos="flip-right" data-aos-offset="150">
       <li class="col-md-8">
         <img class="rounded-3 indexAboutImg img-fluid object-fit-cover w-100" src="https://images.unsplash.com/photo-1579887829663-67706e62e6ac?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80)" style="height: 400px;">
       </li>
-      <li class="col-md-5 d-md-flex flex-md-column position-absolute end-0 position-none">
+      <li class="col-md-5 d-md-flex flex-md-column position-absolute end-0 position-none" >
         <div class="rounded-3 bg-white d-flex flex-column justify-content-center p-4" style="min-height: 250px;">
           <div class="text-center text-md-start">
             <h2 class="mb-3">風味多樣的選擇</h2>
@@ -42,7 +42,7 @@
     </ul>
     </section>
     <section class="container" >
-    <ul class="row d-block d-md-flex align-items-center justify-content-md-end list-unstyled position-relative mb-0">
+    <ul class="row d-block d-md-flex align-items-center justify-content-md-end list-unstyled position-relative mb-0" data-aos="flip-left" data-aos-offset="150">
       <li class="col-md-8">
         <img class="bg-cover rounded-3 indexAboutImg img-fluid object-fit-cover w-100" src="https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" style="height: 400px;">
       </li>
@@ -57,7 +57,7 @@
     </ul>
     </section>
   </div>
-      <div class="container mb-3 py-5">
+      <div class="container mb-3 py-5" data-aos="flip-right" data-aos-offset="300">
         <h2 class="text-center text-primary fw-bold mb-5">精選產品</h2>
         <div class="row">
           <template v-for="(item,i) in products" :key="item.id">
@@ -90,14 +90,14 @@
       </div>
     <div class="container mb-3 py-5">
       <div class="row flex-row-reverse">
-        <div class="col-md-6 mb-md-0 mb-3">
+        <div class="col-md-6 mb-md-0 mb-3" data-aos="fade-up" data-aos-offset="150">
           <div class="rounded-3"
             style="background-image: url('https://images.unsplash.com/photo-1550450339-e7a4787a2074?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');height: 350px;background-size: cover;background-repeat: no-repeat;background-position: center;">
           </div>
         </div>
         <div class="col-md-6 d-flex">
           <div class="d-flex justify-content-center align-items-center">
-            <div>
+            <div data-aos="fade-right" >
               <h2 class="fw-normal mb-5">歡迎來到我們的茶葉世界！</h2>
               <p class="mb-1">我們的使命是將茶的美好帶給每一位顧客，讓您品味生活的美好滋味。我們堅持品質至上，匠心製茶，致力於為您提供最純淨、最美味的茶品體驗。</p>
               <div class="text-center text-md-start">

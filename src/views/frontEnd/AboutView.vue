@@ -47,9 +47,8 @@
     </div>
   </div>
     <div class="container mb-3 py-5">
-      <h2 class="text-primary text-center mb-5">三大堅持</h2>
+      <h2 class="text-primary text-center mb-5">品牌價值</h2>
       <div class="row text-center text-white">
-        <h2>品牌價值</h2>
         <div class="col-lg-4 col-md-6 mb-2 mb-lg-0">
           <div class="card h-100 p-3">
             <span class="material-icons fs-1">

@@ -35,11 +35,6 @@ const routes = [
         meta: { title: '訂單填寫' }
       },
       {
-        path: 'checkout',
-        component: () => import('../views/frontEnd/CheckoutView.vue'),
-        meta: { title: '訂購完成' }
-      },
-      {
         path: 'complete/:order_id',
         component: () => import('../views/frontEnd/CompleteView.vue'),
         meta: { title: '訂單完成' }
