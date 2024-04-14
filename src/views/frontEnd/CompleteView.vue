@@ -49,8 +49,10 @@
               <div class="row pt-3">
                 <hr class="w-100 col-md-9 border-2 border-top">
               </div>
+              <div class="accordion" id="accordionExample">
+              </div>
             </div>
-            <div class="accordion mb-3" id="accordionFlushExample">
+            <div class="accordion" id="accordionFlushExample">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -71,11 +73,11 @@
                 </div>
               </div>
             </div>
-            <div class="d-flex justify-content-center">
-              <button type="button" class="btn btn-primary" @click.prevent="() => pay()" v-if="order.is_paid!==true">前往付款</button>
-              <div v-else></div>
-            </div>
           </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" @click.prevent="() => pay()" v-if="order.is_paid!==true">前往付款</button>
+        <div v-else></div>
       </div>
     </div>
 </template>

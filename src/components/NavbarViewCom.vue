@@ -42,12 +42,8 @@
                 </div>
                 <div v-else class=" text-center carts">
                   <RouterLink to="/cart" class="nav-link me-lg-2 mb-lg-0 position-relative end-0 text-center">
-                    <div class="d-flex justify-content-center">
-                      <span class="d-block d-lg-none me-2">購物車列表</span>
-                      <span class="bi bi-cart position-relative end-0">
-                        <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle">0</span>
-                      </span>
-                    </div>
+                    購物車列表
+                    <span class="bi bi-cart"></span>
                   </RouterLink>
                 </div>
             </li>

@@ -5,7 +5,7 @@
         <Loading v-model:active="isLoading" />
         <div class="p-3">
           <div class="row">
-            <h3 class="text-primary mb-5 fw-bold p-0">已收藏產品</h3>
+            <h3 class="text-primary mb-5 fw-bold p-0" v-if="favoriteList.list.length > 0">已收藏產品</h3>
           </div>
           <template v-if="favoriteList.list.length > 0">
           <div class="row border-1 border-bottom pb-2" v-for="list in favoriteList.list" :key="list.id">
@@ -21,7 +21,7 @@
                 <div class="row">
                   <div class="col-12 d-flex fs-md-5 fs-6 mb-2">
                     <span class="mb-0 me-auto">{{ list.title }}</span>
-                    <span class="fw-bold text-danger">{{ $filters.currency(list.price) }}</span>
+                    <span>{{ $filters.currency(list.price) }}</span>
                   </div>
                   <div class="col-12 d-flex justify-content-end">
                     <button class="btn btn-outline-primary" :disabled="isLoadingStatus.ItemId===list.id"
@@ -32,10 +32,10 @@
             </div>
             </template>
             <template v-else>
-              <p class="text-center h4 mb-3">目前收藏為空的狀態喔!，再去收藏吧~</p>
-              <div class="text-center">
-                <router-link class="w-25 btn btn-primary" to="/products">收藏去</router-link>
-              </div>
+            <p class="text-center h4 mb-3">目前收藏為空的狀態喔!，再去收藏吧~</p>
+            <div class="text-center">
+              <router-link class="w-25 btn btn-primary" to="/products">收藏去</router-link>
+            </div>
           </template>
           </div>
         </div>
