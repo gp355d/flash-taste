@@ -102,7 +102,11 @@ const routes = [
 const router = createRouter({
   history: createWebHashHistory(),
   linkActiveClass: 'active',
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    // 始終滾動到頂部
+    return { top: 0 }
+  }
 })
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {

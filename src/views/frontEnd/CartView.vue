@@ -28,8 +28,8 @@
       <Loading v-model:active="isLoading" />
       <div class="row justify-content-center p-3">
         <div class="col-md-8 shadow-sm bg-white p-3">
+          <h3 class="ps-2 text-primary mb-5">購物車清單</h3>
           <template v-if="carts.carts?.length">
-            <h3 class="ps-2 text-primary mb-5">購物車清單</h3>
             <div class="table-responsive mb-3">
             <table class="table align-middle">
               <thead>
