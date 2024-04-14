@@ -88,26 +88,28 @@
           </template>
         </div>
       </div>
-    <div class="container mb-3 py-5">
-      <div class="row flex-row-reverse">
-        <div class="col-md-6 mb-md-0 mb-3" data-aos="fade-up" data-aos-offset="150">
-          <div class="rounded-3"
-            style="background-image: url('https://images.unsplash.com/photo-1550450339-e7a4787a2074?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');height: 350px;background-size: cover;background-repeat: no-repeat;background-position: center;">
-          </div>
-        </div>
-        <div class="col-md-6 d-flex">
-          <div class="d-flex justify-content-center align-items-center">
-            <div data-aos="fade-right" >
-              <h2 class="fw-normal mb-5">歡迎來到我們的茶葉世界！</h2>
-              <p class="mb-1">我們的使命是將茶的美好帶給每一位顧客，讓您品味生活的美好滋味。我們堅持品質至上，匠心製茶，致力於為您提供最純淨、最美味的茶品體驗。</p>
-              <div class="text-center text-md-start">
-                <RouterLink to="/products" class="btn btn-primary">購物去</RouterLink>
+      <div class="bg-white">
+        <div class="container mb-3 py-5">
+          <div class="row flex-row-reverse">
+            <div class="col-md-6 mb-md-0 mb-3" data-aos="fade-up" data-aos-offset="150">
+              <div class="rounded-3"
+                style="background-image: url('https://images.unsplash.com/photo-1550450339-e7a4787a2074?q=80&w=600&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');height: 350px;background-size: cover;background-repeat: no-repeat;background-position: center;">
+              </div>
+            </div>
+            <div class="col-md-6 d-flex">
+              <div class="d-flex justify-content-center align-items-center">
+                <div data-aos="fade-right" >
+                  <h2 class="fw-normal mb-5">歡迎來到我們的茶葉世界！</h2>
+                  <p class="mb-1">我們的使命是將茶的美好帶給每一位顧客，讓您品味生活的美好滋味。我們堅持品質至上，匠心製茶，致力於為您提供最純淨、最美味的茶品體驗。</p>
+                  <div class="text-center text-md-start">
+                    <RouterLink to="/products" class="btn btn-primary">購物去</RouterLink>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     <div class="mb-3">
       <div class="container">
         <h2 class="text-center text-primary fw-bold mb-5">好評推薦</h2>
@@ -185,18 +187,19 @@
         </div>
       </div>
     </div>
-    <div class="container py-5">
-      <div class="row">
-        <h2 class="text-center text-primary fw-bold mb-5">知識文章</h2>
-        <div class="col-lg-4 col-md-6 mb-3" v-for="article in articleList" :key="article.id">
-          <div class="position-relative h-100">
-            <span class="position-absolute bg-primary p-2 rounded-3 text-white" style="left: -3%;top: 10%;">{{ $filters.date(article.create_at) }}</span>
-            <img class="img-fluid rounded-3 object-fit-cover mb-2 w-100"
-            :src="article.image"
-            :alt="'img'+`${article.id}`" style="height: 300px;">
-            <h4 class="fw-normal mb-4" style="min-height: 60px;">{{ article.title }}</h4>
-            <div class="text-end">
-              <RouterLink class="btn btn-primary" :to="`/blog/${article.id}`">閱讀更多</RouterLink>
+    <div class="bg-white">
+      <div class="container py-5">
+        <div class="row">
+          <h2 class="text-center text-primary fw-bold mb-5">知識文章</h2>
+          <div class="col-lg-4 col-md-6 mb-3" v-for="article in articleList" :key="article.id">
+            <div class="position-relative h-100">
+              <span class="position-absolute bg-primary p-2 rounded-3 text-white" style="left: -3%;top: 10%;">{{ $filters.date(article.create_at) }}</span>
+              <img class="img-fluid rounded-3 object-fit-cover w-100"
+              :src="article.image"
+              :alt="'img'+`${article.id}`" style="height: 300px;">
+              <RouterLink class="w-100 btn btn-outline-primary d-block position-absolute bottom-0 text-white border-0" :to="`/blog/${article.id}`" style="backdrop-filter: blur(3px);">
+                <h4 class="fs-5 fw-normal d-flex align-items-center justify-content-center" style="min-height: 60px;">{{ article.title }}</h4>
+              </RouterLink>
             </div>
           </div>
         </div>
