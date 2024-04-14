@@ -32,7 +32,7 @@
             </div>
             </template>
             <template v-else>
-            <p class="text-center h4 mb-3">目前收藏空的狀態喔!，再去收藏吧~</p>
+            <p class="text-center h4 mb-3">目前收藏為空的狀態喔!，再去收藏吧~</p>
             <div class="text-center">
               <router-link class="w-25 btn btn-primary" to="/products">收藏去</router-link>
             </div>

@@ -24,7 +24,7 @@
             <div class="d-flex justify-content-between align-items-center mb-1">
               <h3 class="h3 text-nowrap me-2 mb-0 fw-bold">{{ product.title }}</h3>
               <div class="d-flex mb-md-0 align-items-center text-decoration-none" @click.prevent="() => addToFavorite(product.id)" style="cursor: pointer;">
-                <span v-if="favoriteList.id.indexOf(product.id) === -1" class="bi bi-heart fs-3"></span>
+                <span v-if="favoriteList.id.indexOf(product.id) === -1" class="bi bi-heart fs-5"></span>
                 <span v-else class="bi bi-heart-fill fs-5 text-primary"></span>
               </div>
             </div><span class="badge bg-primary mb-1">{{ product.category }}</span>

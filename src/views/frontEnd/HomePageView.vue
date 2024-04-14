@@ -70,11 +70,11 @@
                 </a>
                   <div class="p-4">
                     <h3 class="fs-4 fw-bold">{{ item.title }}</h3>
-                    <div v-if="item.price !== item.origin_price">
+                    <div class="mb-3" v-if="item.price !== item.origin_price">
                       <span class="fs-3 text-danger fw-bold">{{ $filters.currency(item.price) }}</span>
                       <del class="fs-6 ms-2 fw-normal">{{ $filters.currency(item.origin_price) }}</del>
                     </div>
-                    <span v-else class="fs-3 text-danger fw-bold">{{ $filters.currency(item.origin_price) }}</span>
+                    <span v-else class="d-block fs-3 text-danger fw-bold mb-3">{{ $filters.currency(item.origin_price) }}</span>
                     <div class="text-center">
                     <a class="btn-lg btn btn-outline-primary d-block text-nowrap" @click.prevent="addToCart(item.id)">加入購物車</a>
                   </div>
@@ -188,14 +188,16 @@
     <div class="container py-5">
       <div class="row">
         <h2 class="text-center text-primary fw-bold mb-5">知識文章</h2>
-        <div class="col-lg-4 col-md-6" v-for="article in articleList" :key="article.id">
+        <div class="col-lg-4 col-md-6 mb-3" v-for="article in articleList" :key="article.id">
           <div class="position-relative h-100">
             <span class="position-absolute bg-primary p-2 rounded-3 text-white" style="left: -3%;top: 10%;">{{ $filters.date(article.create_at) }}</span>
             <img class="img-fluid rounded-3 object-fit-cover mb-2 w-100"
             :src="article.image"
             :alt="'img'+`${article.id}`" style="height: 300px;">
             <h4 class="fw-normal mb-4" style="min-height: 60px;">{{ article.title }}</h4>
-            <RouterLink class="btn btn-primary" :to="`/blog/${article.id}`">閱讀更多</RouterLink>
+            <div class="text-end">
+              <RouterLink class="btn btn-primary" :to="`/blog/${article.id}`">閱讀更多</RouterLink>
+            </div>
           </div>
         </div>
       </div>

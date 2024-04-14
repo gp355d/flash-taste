@@ -77,7 +77,7 @@
           </div>
           <router-link to="/products" class="d-inline-flex align-items-center text-decoration-none">
           <span class="material-icons">keyboard_return</span>
-          回商品列表
+          回產品列表
         </router-link>
         <div class="row justify-content-end" v-if="carts.carts?.length > 0">
         <div class="col-md-8 mb-3">

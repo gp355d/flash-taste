@@ -28,7 +28,7 @@
           <div class="mb-3">
             <label for="due_date">到期日</label>
             <input type="date" class="form-control" id="due_date"
-                   v-model="due_date" :min="due_date">
+                   v-model="due_date" :min="minDateISO">
           </div>
           <div class="mb-3">
             <label for="price">折扣百分比</label>
@@ -108,7 +108,7 @@ export default {
   mounted () {
     const today = new Date()
     // 將小時、分鐘、秒和毫秒設為零，以確保最小期為今天的零時零分零秒
-    today.setDate(today.getDate() + 1)
+    today.setDate(today.getDate())
     // 轉換最小日期為 ISO 格式 (yyyy-mm-dd)，並設置
     this.minDateISO = today.toISOString().split('T')[0]
     this.couponModal = new Modal(this.$refs.couponModal, {

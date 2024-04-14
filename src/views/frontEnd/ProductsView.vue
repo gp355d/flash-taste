@@ -40,7 +40,7 @@
                             <span class="fs-4 text-danger fw-bold me-2">{{ $filters.currency(products.price) }}</span>
                             <del class="fs-6 text-black fw-normal">{{ $filters.currency(products.origin_price) }}</del>
                           </div>
-                          <span class="fs-3 text-danger fw-normal" v-else>{{ $filters.currency(products.origin_price) }}</span>
+                          <span class="fs-4 text-danger fw-bold" v-else>{{ $filters.currency(products.origin_price) }}</span>
                           <div class="d-grid gap-2">
                             <button class="btn btn-outline-primary fw-normal" :disabled="isLoadingStatus.ItemId===products.id" @click.prevent="addToCart(products.id)"> 加入購物車</button>
                           </div>
