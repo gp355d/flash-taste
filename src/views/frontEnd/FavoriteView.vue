@@ -15,12 +15,12 @@
                 </a>
               </div>
               <div class="col-4 d-flex flex-column justify-content-center">
-                <img class="img-fluid object-fit-cover" :src="list.imageUrl" :key="list.id">
+                <router-link :to="`/product/${list.id}`"><img class="img-fluid object-fit-cover" :src="list.imageUrl" :key="list.id"></router-link>
               </div>
               <div class="col-md col p-2 d-flex flex-column justify-content-center">
                 <div class="row">
                   <div class="col-12 d-flex fs-md-5 fs-6 mb-2">
-                    <span class="mb-0 me-auto">{{ list.title }}</span>
+                    <router-link class="text-decoration-none" :to="`/product/${list.id}`"><span class="mb-0 me-auto">{{ list.title }}</span></router-link>
                     <span class="fw-bold text-danger">{{ $filters.currency(list.price) }}</span>
                   </div>
                   <div class="col-12 d-flex justify-content-end">

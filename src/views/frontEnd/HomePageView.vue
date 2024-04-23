@@ -1,7 +1,7 @@
 <template>
   <section data-aos="fade-up" data-aos-duration="600">
     <div class="d-flex flex-column justify-content-center align-items-center px-5 px-lg-0" style="background-image: url(https://images.unsplash.com/photo-1522747776116-64ee03be1dad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);background-repeat: no-repeat;background-size: cover;height: 450px;background-position: center;">
-      <div class="d-flex flex-column justify-content-center align-items-center px-lg-5 py-lg-2  px-2 py-1" style="background: rgba(255, 255, 255, 0.1);border-radius: 24px;backdrop-filter: blur(3px);">
+      <div class="d-flex flex-column justify-content-center align-items-center px-lg-5 py-lg-5  px-4 py-4" style="background: rgba(255, 255, 255, 0.1);border-radius: 24px;backdrop-filter: blur(3px);">
         <img src="../../assets/logo4-2.svg" alt="logo" width="260" height="160" class="img-fluid mb-3"  />
         <h3 class="fs-1 fs-lg-2 text-center text-white mb-0">療癒一杯，感受生活的美好</h3>
         <h1 class="fs-2 fs-lg-3 text-center text-white text-gray-dark mb-5">尋找心靈的寧靜之旅</h1>

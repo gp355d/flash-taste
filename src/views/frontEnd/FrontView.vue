@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper bg-light">
     <div class="min-vh-100">
-      <NavCom :num="cartNum" :cartIitem="carts"/>
+      <NavbarViewCom :num="cartNum" :cartIitem="carts"/>
         <router-view />
     </div>
   </div>
@@ -27,7 +27,7 @@
 <script>
 import { mapState, mapActions } from 'pinia'
 import CartStore from '@/stores/CartStore'
-import NavCom from '@/components/NavbarViewCom.vue'
+import NavbarViewCom from '@/components/NavbarViewCom.vue'
 export default {
   computed: {
     ...mapState(CartStore, ['cartNum', 'total', 'carts'])
@@ -36,7 +36,7 @@ export default {
     ...mapActions(CartStore, ['getCarts'])
   },
   components: {
-    NavCom
+    NavbarViewCom
   },
   mounted () {
     this.getCarts()

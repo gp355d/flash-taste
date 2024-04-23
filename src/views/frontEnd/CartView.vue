@@ -53,13 +53,19 @@
                     <div class="input-group flex-nowrap">
                       <div class="input-group-prepend">
                         <button class="btn btn-outline-success" type="button" :disabled="cart.qty === 1"
-                          @click.prevent="cart.qty--; changeToCart(cart, cart.qty)">-</button>
+                          @click.prevent="cart.qty--; changeToCart(cart, cart.qty)" style="
+                          border-top-right-radius: 0;
+                          border-bottom-right-radius: 0;
+                      ">-</button>
                       </div>
                       <input type="text" class="form-control text-center" value="1" readonly v-model="cart.qty"
                         :disabled="isLoadingStatus.cartLoading === cart.id" style="width: 80px;">
                       <div class="input-group-append">
                         <button class="btn btn-outline-success" type="button"
-                          @click.prevent="cart.qty++; changeToCart(cart, cart.qty)">+</button>
+                          @click.prevent="cart.qty++; changeToCart(cart, cart.qty)" style="
+                          border-top-left-radius: 0;
+                          border-bottom-left-radius: 0;
+                      ">+</button>
                         <span>{{ cart.product.unit }}</span>
                       </div>
                     </div>
@@ -68,7 +74,7 @@
                     {{ $filters.currency(cart.product.price * cart.qty) }}
                   </td>
                   <td>
-                    <a class="d-none d-md-block text-black" href="#"><span class="trash bi bi-trash fs-2"
+                    <a class="text-black" href="#"><span class="trash bi bi-trash fs-3"
                         @click.prevent="deleteCart(cart.id)"></span></a>
                   </td>
                 </tr>
