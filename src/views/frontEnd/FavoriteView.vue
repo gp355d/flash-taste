@@ -20,8 +20,8 @@
               <div class="col-md col p-2 d-flex flex-column justify-content-center">
                 <div class="row">
                   <div class="col-12 d-flex fs-md-5 fs-6 mb-2">
-                    <router-link class="text-decoration-none" :to="`/product/${list.id}`"><span class="mb-0 me-auto">{{ list.title }}</span></router-link>
-                    <span class="fw-bold text-danger">{{ $filters.currency(list.price) }}</span>
+                    <router-link class="text-decoration-none" :to="`/product/${list.id}`"><span class="mb-0">{{ list.title }}</span></router-link>
+                    <span class="fw-bold text-danger ms-auto">{{ $filters.currency(list.price) }}</span>
                   </div>
                   <div class="col-12 d-flex justify-content-end">
                     <button class="btn btn-outline-primary" :disabled="isLoadingStatus.ItemId===list.id"
