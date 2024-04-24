@@ -45,7 +45,7 @@
               <tbody v-for="cart in carts.carts" :key="cart.id + 'cart'">
                 <tr>
                   <td class="text-center">
-                    <a class="text-black" href="#"><span class="trash bi bi-trash fs-3"
+                    <a class="text-black" href="#"><span class="trash bi bi-trash"
                         @click.prevent="deleteCart(cart.id)"></span></a>
                   </td>
                   <td width="90">
