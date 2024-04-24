@@ -34,16 +34,20 @@
             <table class="table align-middle">
               <thead>
                 <tr>
+                  <th class="text-nowrap" scope="col"></th>
                   <th class="text-nowrap" scope="col">產品圖片</th>
                   <th class="text-nowrap" scope="col">產品名稱</th>
                   <th class="text-nowrap" scope="col">產品售價</th>
                   <th class="text-nowrap" width="150">數量</th>
                   <th class="text-nowrap" scope="col">總價</th>
-                  <th class="text-nowrap" scope="col"></th>
                 </tr>
               </thead>
               <tbody v-for="cart in carts.carts" :key="cart.id + 'cart'">
                 <tr>
+                  <td class="text-center">
+                    <a class="text-black" href="#"><span class="trash bi bi-trash fs-3"
+                        @click.prevent="deleteCart(cart.id)"></span></a>
+                  </td>
                   <td width="90">
                     <img :src="cart.product.imageUrl" :alt="`商品圖片-${cart.id}`" class="img-fluid rounded-3 object-fit-cover">
                   </td>
@@ -72,10 +76,6 @@
                   </td>
                   <td>
                     {{ $filters.currency(cart.product.price * cart.qty) }}
-                  </td>
-                  <td>
-                    <a class="text-black" href="#"><span class="trash bi bi-trash fs-3"
-                        @click.prevent="deleteCart(cart.id)"></span></a>
                   </td>
                 </tr>
               </tbody>
